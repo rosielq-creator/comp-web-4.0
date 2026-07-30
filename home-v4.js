@@ -38,24 +38,55 @@ videos.forEach(video=>observer.observe(video));
 
 const canvas=document.querySelector("#mineralCanvas");
 const ctx=canvas?.getContext("2d");
-let width=0,height=0,raf=0;
-function resize(){width=canvas.width=innerWidth*devicePixelRatio;height=canvas.height=innerHeight*devicePixelRatio}
-function draw(time){
-  ctx.clearRect(0,0,width,height);
-  const t=time*.00012;
-  ctx.globalCompositeOperation="screen";
-  for(let i=0;i<7;i++){
-    const phase=t+i*1.37;
-    const x=width*(.5+Math.sin(phase*.83+i)*(.22+i*.008));
-    const y=height*(.46+Math.cos(phase*.61+i*.72)*(.18+i*.006));
-    const r=Math.max(width,height)*(.2+i*.018);
-    const g=ctx.createRadialGradient(x,y,0,x,y,r);
-    g.addColorStop(0,`rgba(${78+i*7},${94+i*8},${72+i*6},${.15-i*.011})`);
-    g.addColorStop(.46,`rgba(${56+i*5},${70+i*6},${52+i*4},${.08-i*.006})`);
-    g.addColorStop(1,"rgba(11,13,10,0)");
-    ctx.fillStyle=g;ctx.fillRect(0,0,width,height);
+let width=0,height=0,raf=0,isHeroVisible=true;
+const motionQuery=matchMedia("(prefers-reduced-motion: reduce)");
+function resize(){
+  const ratio=Math.min(devicePixelRatio,1.5);
+  width=canvas.width=innerWidth*ratio;
+  height=canvas.height=innerHeight*ratio;
+}
+function ribbon(time,index){
+  const t=time*.00017;
+  const center=height*(.18+index*.13);
+  const amplitude=height*(.07+index*.008);
+  const thickness=height*(.12+index*.012);
+  const gradient=ctx.createLinearGradient(0,center-thickness,width,center+thickness);
+  const alpha=.12-index*.012;
+  gradient.addColorStop(0,`rgba(91,108,82,${alpha*.45})`);
+  gradient.addColorStop(.48,`rgba(182,190,170,${alpha})`);
+  gradient.addColorStop(1,`rgba(63,80,58,${alpha*.35})`);
+  ctx.beginPath();
+  for(let x=-width*.08;x<=width*1.08;x+=width/28){
+    const y=center
+      +Math.sin(x/width*5.4+t*(.78+index*.08)+index*1.7)*amplitude
+      +Math.cos(x/width*2.1-t*.46+index)*amplitude*.42;
+    if(x===-width*.08) ctx.moveTo(x,y-thickness);
+    else ctx.lineTo(x,y-thickness);
   }
+  for(let x=width*1.08;x>=-width*.08;x-=width/28){
+    const y=center
+      +Math.sin(x/width*5.4+t*(.78+index*.08)+index*1.7)*amplitude
+      +Math.cos(x/width*2.1-t*.46+index)*amplitude*.42;
+    ctx.lineTo(x,y+thickness);
+  }
+  ctx.closePath();
+  ctx.fillStyle=gradient;
+  ctx.fill();
+}
+function draw(time){
+  if(!isHeroVisible){raf=0;return}
+  ctx.clearRect(0,0,width,height);
+  ctx.globalCompositeOperation="screen";
+  for(let i=0;i<6;i++) ribbon(time,i);
   ctx.globalCompositeOperation="source-over";
   raf=requestAnimationFrame(draw);
 }
-if(canvas&&ctx&&!matchMedia("(prefers-reduced-motion: reduce)").matches){resize();addEventListener("resize",resize);raf=requestAnimationFrame(draw)}
+if(canvas&&ctx&&!motionQuery.matches){
+  resize();
+  addEventListener("resize",resize);
+  new IntersectionObserver(([entry])=>{
+    isHeroVisible=entry.isIntersecting;
+    if(isHeroVisible&&!raf) raf=requestAnimationFrame(draw);
+  },{threshold:0}).observe(canvas);
+  raf=requestAnimationFrame(draw);
+}
