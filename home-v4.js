@@ -39,11 +39,20 @@ videos.forEach(video=>observer.observe(video));
 const hero=document.querySelector(".hero");
 const frontline=document.querySelector(".frontline");
 if(frontline){
-  const frontlineObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{
-    frontline.classList.toggle("is-visible",entry.isIntersecting);
-    hero?.classList.toggle("is-leaving",entry.isIntersecting);
-  }),{threshold:.16});
-  frontlineObserver.observe(frontline);
+  let frontlineFrame=0;
+  const syncFrontline=()=>{
+    frontlineFrame=0;
+    const bounds=frontline.getBoundingClientRect();
+    const revealDistance=Math.max(innerHeight*.72,1);
+    const progress=Math.max(0,Math.min(1,(innerHeight-bounds.top)/revealDistance));
+    frontline.style.setProperty("--frontline-progress",progress.toFixed(3));
+  };
+  const requestFrontline=()=>{
+    if(!frontlineFrame) frontlineFrame=requestAnimationFrame(syncFrontline);
+  };
+  addEventListener("scroll",requestFrontline,{passive:true});
+  addEventListener("resize",requestFrontline,{passive:true});
+  syncFrontline();
 }
 
 const canvas=document.querySelector("#mineralCanvas");
