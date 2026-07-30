@@ -4,7 +4,7 @@ const artists = [
     role: "Luxury Fashion · Art",
     image: "assets/profiles/maya/pink-editorial.png",
     href: "maya.html",
-    alt: "Maya, GTAI featured AI luxury fashion and art artist",
+    alt: "Maya, Greentomato featured AI luxury fashion and art artist",
     position: "center 24%"
   },
   {
@@ -12,7 +12,7 @@ const artists = [
     role: "Music · Fashion · Creative Culture",
     image: "assets/profiles/amber/night-portrait.png",
     href: "amber.html",
-    alt: "Amber, GTAI featured AI music and fashion artist",
+    alt: "Amber, Greentomato featured AI music and fashion artist",
     position: "center 30%"
   },
   {
@@ -20,7 +20,7 @@ const artists = [
     role: "Beauty · Wellness · Digital Spirit",
     image: "assets/profiles/ooona/hero.png",
     href: "ooona.html",
-    alt: "Ooona, GTAI featured AI beauty and wellness artist",
+    alt: "Ooona, Greentomato featured AI beauty and wellness artist",
     position: "center center"
   },
   {
@@ -28,7 +28,7 @@ const artists = [
     role: "Film · Fashion · Culture",
     image: "assets/profiles/noah/black-portrait.png",
     href: "noah.html",
-    alt: "Noah, GTAI featured AI film and fashion artist",
+    alt: "Noah, Greentomato featured AI film and fashion artist",
     position: "center 28%"
   },
   {
@@ -36,7 +36,7 @@ const artists = [
     role: "Lifestyle · Fashion · Sport",
     image: "assets/mario-portrait.png",
     href: "mario.html",
-    alt: "Mario, GTAI featured AI lifestyle and sport artist",
+    alt: "Mario, Greentomato featured AI lifestyle and sport artist",
     position: "center center"
   }
 ];
@@ -52,7 +52,7 @@ const copy = {
     workIntro: "Browse published work by industry. Open a brand to see every project in one place.",
     totalViews: "Over 1.2 Million Views", hospitality: "Hospitality", retail: "Retail", entertainment: "Entertainment", fashion: "Fashion & Lifestyle",
     projectsFor: "Projects for", closeProjects: "Close projects", works: "Works", published: "Published",
-    fullProduction: "Full video & image production by GTAI",
+    fullProduction: "Full video & image production by Greentomato",
     servicesTitleOne: "One team.", servicesTitleTwo: "New creative systems.",
     servicesIntro: "We unite character, direction, production and technology around the needs of each brand.",
     serviceVideo: "Concept, creative direction and AI-powered film production for campaigns and branded stories.",
@@ -61,7 +61,7 @@ const copy = {
     labsCopy: "Experimental interactive experiences, agents and custom prototypes developed with selected partners.",
     discussExperiment: "Discuss an experiment",
     aboutTitleOne: "Characters are the", aboutTitleTwo: "new creative infrastructure.",
-    aboutCopyOne: "GTAI is a Hong Kong AI artist agency and production studio. We develop ownable digital personalities and the visual systems that let them perform across channels, markets and formats.",
+    aboutCopyOne: "Greentomato is a Hong Kong AI artist agency and production studio. We develop ownable digital personalities and the visual systems that let them perform across channels, markets and formats.",
     aboutCopyTwo: "Our work combines human creative direction with AI-native production—from a single campaign film to an artist built for years of storytelling.",
     meetRoster: "Meet the roster", processCharacter: "Identity, voice and world", processDirection: "Concept and art direction",
     processProduction: "Film, image and social", processContinuity: "Consistent, scalable output",
@@ -72,7 +72,7 @@ const copy = {
     formNote: "WhatsApp delivery will be connected in the next phase. This preview stores no data.",
     sendInquiry: "Send inquiry", formSelectService: "Select at least one service.", formSuccess: "Thank you. The inquiry flow is ready; WhatsApp delivery will be connected next.",
     footerLine: "Next-generation AI artists and production for brands.",
-    rosterEyebrow: "GTAI artist roster · Hong Kong / Asia", rosterTitleOne: "Meet the minds", rosterTitleTwo: "inside the machine.",
+    rosterEyebrow: "Greentomato artist roster · Hong Kong / Asia", rosterTitleOne: "Meet the minds", rosterTitleTwo: "inside the machine.",
     rosterIntro: "Distinct digital talents. One next-generation roster.",
     currentRoster: "CURRENT FLAGSHIP ARTISTS", moreArtists: "More artists are taking shape.",
     moreArtistsCopy: "The roster is designed to grow. New identities will appear here without changing the flagship five.",
@@ -90,7 +90,7 @@ const copy = {
     workIntro: "按行業瀏覽已上線作品；展開品牌即可在同一位置查看旗下全部項目。",
     totalViews: "總觀看量超過 120 萬", hospitality: "酒店及款待", retail: "零售", entertainment: "娛樂", fashion: "時裝及生活",
     projectsFor: "為以下品牌製作", closeProjects: "收起作品", works: "項作品", published: "已上線",
-    fullProduction: "全部影片及圖片由 GTAI 製作",
+    fullProduction: "全部影片及圖片由 Greentomato 製作",
     servicesTitleOne: "一個團隊。", servicesTitleTwo: "全新的創意系統。",
     servicesIntro: "我們圍繞品牌需求，整合人物、創意指導、製作與技術。",
     serviceVideo: "為品牌企劃與故事提供概念、創意指導及 AI 影片製作。",
@@ -99,7 +99,7 @@ const copy = {
     labsCopy: "與指定合作夥伴共同開發實驗性互動體驗、智能工具與客製原型。",
     discussExperiment: "討論實驗項目",
     aboutTitleOne: "角色就是", aboutTitleTwo: "新世代創意基礎設施。",
-    aboutCopyOne: "GTAI 是香港 AI 藝人經紀公司及製作工作室。我們創造可擁有的數字人個性，以及讓他們跨平台、市場與格式持續演出的視覺系統。",
+    aboutCopyOne: "Greentomato 是香港 AI 藝人經紀公司及製作工作室。我們創造可擁有的數字人個性，以及讓他們跨平台、市場與格式持續演出的視覺系統。",
     aboutCopyTwo: "我們把人類創意指導與 AI 原生製作結合——從一支 Campaign 影片，到能持續多年說故事的藝人。",
     meetRoster: "認識藝人陣容", processCharacter: "身份、聲音與世界觀", processDirection: "概念與藝術指導",
     processProduction: "影片、圖片與社交內容", processContinuity: "一致且可規模化的產出",
@@ -110,7 +110,7 @@ const copy = {
     formNote: "WhatsApp 發送會在下一階段接通；目前預覽不會儲存資料。",
     sendInquiry: "發送詢盤", formSelectService: "請至少選擇一項服務。", formSuccess: "謝謝。詢盤流程已準備好，下一階段將接通 WhatsApp。",
     footerLine: "為品牌提供新世代 AI 藝人與製作服務。",
-    rosterEyebrow: "GTAI 藝人陣容 · 香港／亞洲", rosterTitleOne: "認識機器之中", rosterTitleTwo: "獨一無二的靈魂。",
+    rosterEyebrow: "Greentomato 藝人陣容 · 香港／亞洲", rosterTitleOne: "認識機器之中", rosterTitleTwo: "獨一無二的靈魂。",
     rosterIntro: "獨具風格的數字人才，匯聚新世代陣容。",
     currentRoster: "目前招牌藝人", moreArtists: "更多藝人正在成形。",
     moreArtistsCopy: "這個陣容會持續成長；新身份將加入這裡，同時保留目前五位招牌藝人。",
@@ -140,7 +140,7 @@ copy["zh-hans"] = Object.fromEntries(Object.entries(copy.zh).map(([key, value]) 
   toSimplified(value)
 ]));
 
-const storedLanguage = localStorage.getItem("gtai-language");
+const storedLanguage = localStorage.getItem("greentomato-language");
 let language = storedLanguage === "zh" ? "zh-hant" : (copy[storedLanguage] ? storedLanguage : "en");
 
 function applyLanguage() {
@@ -158,7 +158,7 @@ function applyLanguage() {
     button.classList.toggle("is-active", active);
     button.setAttribute("aria-pressed", String(active));
   });
-  localStorage.setItem("gtai-language", language);
+  localStorage.setItem("greentomato-language", language);
 }
 
 document.querySelectorAll("#languageSwitcher [data-language]").forEach((button) => {

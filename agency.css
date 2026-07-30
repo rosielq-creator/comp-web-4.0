@@ -62,6 +62,8 @@ button, a { -webkit-tap-highlight-color: transparent; }
   border-color: oklch(0.72 0.014 95 / 0.7);
 }
 .agency-logo { width: max-content; font-size: 25px; font-weight: 600; letter-spacing: -0.07em; line-height: 1; }
+.company-logo img { width: clamp(118px, 11vw, 168px); height: auto; filter: brightness(0) invert(1); }
+.agency-header-light .company-logo img { filter: none; }
 .agency-logo span { margin-left: 4px; font-size: 8px; letter-spacing: 0; vertical-align: top; }
 .desktop-nav { display: flex; align-items: center; gap: clamp(24px, 2.6vw, 48px); }
 .desktop-nav a {
@@ -123,6 +125,47 @@ button, a { -webkit-tap-highlight-color: transparent; }
     radial-gradient(circle at 62% 14%, oklch(0.27 0.04 210 / 0.28), transparent 32%),
     var(--ink);
 }
+.hero-wordmark {
+  position: absolute;
+  z-index: 1;
+  top: 49%;
+  left: -1.4vw;
+  margin: 0;
+  color: transparent;
+  -webkit-text-stroke: 1px oklch(0.84 0.2 132 / 0.22);
+  font-family: "Instrument Serif", serif;
+  font-size: clamp(92px, 15.8vw, 300px);
+  line-height: .72;
+  letter-spacing: -.055em;
+  white-space: nowrap;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+.hero-material {
+  position: absolute;
+  z-index: 1;
+  border: 1px solid oklch(0.72 0.08 135 / .3);
+  background: linear-gradient(145deg, oklch(0.72 0.08 135 / .18), oklch(0.28 0.03 130 / .03));
+  box-shadow: inset 24px 20px 50px oklch(0.9 0.04 130 / .08), 0 30px 90px oklch(0.08 0.02 130 / .3);
+  backdrop-filter: blur(5px);
+  pointer-events: none;
+}
+.hero-material-a {
+  top: 13%;
+  right: 29%;
+  width: clamp(90px, 12vw, 190px);
+  aspect-ratio: .68;
+  border-radius: 49% 51% 65% 35%;
+  transform: rotate(24deg);
+}
+.hero-material-b {
+  right: 5%;
+  bottom: 15%;
+  width: clamp(54px, 7vw, 112px);
+  aspect-ratio: 1;
+  border-radius: 36% 64% 46% 54%;
+  transform: rotate(-18deg);
+}
 .signal-field { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0.56; }
 .hero::before {
   content: ""; position: absolute; inset: 0; pointer-events: none;
@@ -181,6 +224,18 @@ button, a { -webkit-tap-highlight-color: transparent; }
   clip-path: polygon(8% 0, 100% 0, 92% 100%, 0 100%);
   background: oklch(0.26 0.015 105); transform: translateZ(0);
 }
+.artist-portrait { border: 1px solid oklch(0.84 0.2 132 / .24); }
+.artist-portrait::before {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  background: linear-gradient(115deg, transparent 25%, oklch(0.84 0.2 132 / .12) 52%, transparent 70%);
+  transform: translateX(-110%);
+  transition: transform 500ms var(--ease-move);
+  pointer-events: none;
+}
+.artist-stage:hover .artist-portrait::before { transform: translateX(110%); }
 .artist-portrait::after {
   content: ""; position: absolute; inset: 0; pointer-events: none;
   background: linear-gradient(180deg, transparent 60%, oklch(0.18 0.015 105 / 0.6)), linear-gradient(90deg, oklch(0.84 0.2 132 / 0.07), transparent);
@@ -476,6 +531,73 @@ button, a { -webkit-tap-highlight-color: transparent; }
   *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
   .signal-field, .artist-signal { display: none; }
   .artist-portrait img { transform: none !important; }
+}
+
+/* Website 4.0 Home opening: mineral-green editorial dark room. */
+body[data-page="home"] .agency-header { color: #e7e6dd; }
+body[data-page="home"] .desktop-nav .nav-contact { color: #e7e6dd; }
+body[data-page="home"] .agency-header.is-scrolled {
+  color: #e7e6dd;
+  background: rgb(9 10 8 / .9);
+  border-color: rgb(166 174 152 / .22);
+}
+body[data-page="home"] .company-logo img { filter: none; }
+body[data-page="home"] .language-switcher button.is-active {
+  color: #090a08;
+  background: #e7e6dd;
+}
+body[data-page="home"] .hero {
+  color: #e7e6dd;
+  background:
+    radial-gradient(circle at 76% 38%, rgb(102 113 91 / .34), transparent 29%),
+    radial-gradient(circle at 43% 86%, rgb(32 42 32 / .82), transparent 35%),
+    #090a08;
+}
+body[data-page="home"] .hero::before {
+  opacity: .16;
+  background-image:
+    linear-gradient(rgb(166 174 152 / .25) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(166 174 152 / .25) 1px, transparent 1px);
+}
+body[data-page="home"] .hero::after {
+  border-color: rgb(166 174 152 / .22);
+  background:
+    radial-gradient(circle at 35% 30%, rgb(231 230 221 / .15), transparent 18%),
+    radial-gradient(circle at 62% 65%, rgb(102 113 91 / .2), transparent 34%);
+  box-shadow: inset 0 0 60px rgb(231 230 221 / .08), 0 28px 90px rgb(0 0 0 / .35);
+  opacity: .76;
+}
+body[data-page="home"] .hero h1 em { color: #a6ae98; }
+body[data-page="home"] .hero-intro,
+body[data-page="home"] .eyebrow,
+body[data-page="home"] .artist-caption p,
+body[data-page="home"] .artist-number { color: rgb(231 230 221 / .68); }
+body[data-page="home"] .button-primary {
+  color: #090a08;
+  border-color: #a6ae98;
+  background: #a6ae98;
+}
+body[data-page="home"] .button-primary:hover { color: #e7e6dd; background: transparent; }
+body[data-page="home"] .artist-selector,
+body[data-page="home"] .artist-tab,
+body[data-page="home"] .hero-foot { border-color: rgb(166 174 152 / .28); }
+body[data-page="home"] .artist-tab { color: rgb(231 230 221 / .55); }
+body[data-page="home"] .artist-tab:hover,
+body[data-page="home"] .artist-tab.is-active { color: #e7e6dd; }
+body[data-page="home"] .artist-tab.is-active strong { color: #a6ae98; }
+body[data-page="home"] .desktop-nav .nav-contact { color: #e7e6dd; }
+body[data-page="home"] .artist-caption h2 { text-shadow: 0 2px 20px rgb(0 0 0 / .5); }
+
+@media (max-width: 760px) {
+  .hero-wordmark { top: 41%; font-size: 28vw; }
+  .hero-material-a { right: 8%; }
+  .hero-material-b { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-material,
+  .hero-wordmark { transform: none; }
+  .artist-stage:hover .artist-portrait::before { translate: 0; }
 }
 
 /* 2026 light editorial refresh */
@@ -1379,6 +1501,42 @@ body {
     width: 100%;
   }
 }
+
+/* Final cascade lock for the approved dark Home direction. */
+body[data-page="home"] .agency-header { color: #e7e6dd; }
+body[data-page="home"] .agency-header.is-scrolled { color: #e7e6dd; background: rgb(9 10 8 / .9); border-color: rgb(166 174 152 / .22); }
+body[data-page="home"] .company-logo img { filter: none; }
+body[data-page="home"] .language-switcher button.is-active { color: #090a08; background: #e7e6dd; }
+body[data-page="home"] .hero {
+  color: #e7e6dd;
+  background:
+    radial-gradient(circle at 76% 38%, rgb(102 113 91 / .34), transparent 29%),
+    radial-gradient(circle at 43% 86%, rgb(32 42 32 / .82), transparent 35%),
+    #090a08;
+}
+body[data-page="home"] .hero::before {
+  opacity: .16;
+  background-image: linear-gradient(rgb(166 174 152 / .25) 1px, transparent 1px), linear-gradient(90deg, rgb(166 174 152 / .25) 1px, transparent 1px);
+}
+body[data-page="home"] .hero::after {
+  border-color: rgb(166 174 152 / .22);
+  background: radial-gradient(circle at 35% 30%, rgb(231 230 221 / .15), transparent 18%), radial-gradient(circle at 62% 65%, rgb(102 113 91 / .2), transparent 34%);
+  box-shadow: inset 0 0 60px rgb(231 230 221 / .08), 0 28px 90px rgb(0 0 0 / .35);
+}
+body[data-page="home"] .hero h1 em { color: #a6ae98; }
+body[data-page="home"] .hero-intro,
+body[data-page="home"] .eyebrow,
+body[data-page="home"] .artist-caption p,
+body[data-page="home"] .artist-number { color: rgb(231 230 221 / .68); }
+body[data-page="home"] .button-primary { color: #090a08; border-color: #a6ae98; background: #a6ae98; }
+body[data-page="home"] .button-primary:hover { color: #e7e6dd; background: transparent; }
+body[data-page="home"] .artist-selector,
+body[data-page="home"] .artist-tab,
+body[data-page="home"] .hero-foot { border-color: rgb(166 174 152 / .28); }
+body[data-page="home"] .artist-tab { color: rgb(231 230 221 / .55); }
+body[data-page="home"] .artist-tab:hover,
+body[data-page="home"] .artist-tab.is-active { color: #e7e6dd; }
+body[data-page="home"] .artist-tab.is-active strong { color: #a6ae98; }
 
 /* Industry-led work browser */
 .work-section {
