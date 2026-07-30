@@ -32,6 +32,13 @@ function selectArtist(index) {
     currentLayer.classList.remove("is-visible");
   }
   document.querySelector("[data-artist-role]").innerHTML = current.role.replaceAll("<br>", " / ");
+  const number = String(index + 1).padStart(2, "0");
+  const count = document.querySelector("[data-artist-count]");
+  const shortNumber = document.querySelector("[data-artist-short-number]");
+  const progress = document.querySelector("[data-artist-progress]");
+  if (count) count.textContent = `${number} / 05`;
+  if (shortNumber) shortNumber.textContent = number;
+  if (progress) progress.style.transform = `scaleX(${index + 1})`;
   document.querySelector("[data-artist-link]").href = current.href;
   document.querySelector("[data-artist-link]").setAttribute("aria-label", `View ${current.name} profile`);
   tabs.forEach((tab, i) => {

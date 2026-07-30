@@ -639,18 +639,61 @@ main .artists {
   grid-column: 1;
   grid-row: 1;
   align-self: center;
-  max-width: 27ch;
-  color: rgba(231, 230, 221, .72);
-  font-size: clamp(12px, .86vw, 15px);
+  max-width: 31ch;
+  color: rgba(231, 230, 221, .62);
+  font-size: clamp(12px, .78vw, 14px);
   font-weight: 600;
-  line-height: 1.48;
-  letter-spacing: -0.012em;
+  line-height: 1.62;
+  letter-spacing: .005em;
+}
+.artists-manifesto-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: clamp(34px, 5vh, 58px);
+  color: var(--ivory);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+}
+.artists-manifesto-head::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  flex: none;
+  border-radius: 50%;
+  background: var(--brand-green);
+}
+.artists-manifesto-head span { margin-right: auto; }
+.artists-manifesto-head b {
+  color: rgba(231, 230, 221, .45);
+  font-weight: 600;
+  letter-spacing: .09em;
+  white-space: nowrap;
 }
 .artists-manifesto p {
   margin: 0;
 }
 .artists-manifesto p + p {
-  margin-top: 1.5em;
+  margin-top: 2.15em;
+}
+.artists-progress {
+  position: relative;
+  width: 100%;
+  height: 1px;
+  margin-top: clamp(42px, 6vh, 68px);
+  overflow: hidden;
+  background: rgba(231, 230, 221, .18);
+}
+.artists-progress i {
+  display: block;
+  width: 20%;
+  height: 100%;
+  background: var(--ivory);
+  transform-origin: left center;
+  transition: transform 480ms var(--ease);
 }
 .artist-name-list {
   grid-column: 2;
@@ -662,9 +705,26 @@ main .artists {
 .artist-name {
   width: max-content;
   max-width: 100%;
-  font-size: clamp(76px, 9.1vw, 170px);
-  line-height: .78;
+  font-size: clamp(82px, 9.4vw, 176px);
+  font-weight: 600;
+  line-height: .76;
+  letter-spacing: -.075em;
   text-align: center;
+}
+.artist-name span {
+  display: block;
+  transition: transform 500ms var(--ease), letter-spacing 500ms var(--ease);
+}
+.artist-name:hover span,
+.artist-name:focus-visible span,
+.artist-name.is-active span {
+  transform: translateX(clamp(8px, 1vw, 18px));
+  letter-spacing: -.045em;
+}
+.artist-name:hover,
+.artist-name:focus-visible,
+.artist-name.is-active {
+  transform: none;
 }
 .artist-preview {
   grid-column: 3;
@@ -674,6 +734,22 @@ main .artists {
   height: auto;
   min-height: 0;
   aspect-ratio: 3 / 4;
+}
+.artist-preview-index {
+  position: absolute;
+  z-index: 2;
+  top: 16px;
+  right: 18px;
+  left: 18px;
+  display: flex;
+  justify-content: space-between;
+  color: rgba(255, 255, 255, .76);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: .11em;
+}
+.artist-preview-index b {
+  font-weight: 600;
 }
 
 @media (max-width: 900px) {
@@ -721,8 +797,11 @@ main .artists {
     grid-row: 1;
     max-width: 34ch;
     margin: 0 0 28px;
-    font-size: 10px;
+    font-size: 11px;
   }
+  .artists-manifesto-head { margin-bottom: 22px; }
+  .artists-manifesto p + p { margin-top: 1.4em; }
+  .artists-progress { margin-top: 26px; }
   .artist-name-list {
     grid-column: 1;
     grid-row: 2;
