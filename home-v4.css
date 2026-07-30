@@ -753,28 +753,37 @@ main .artists {
   }
 }
 
-/* Hero handoff: the page travels while the words disperse.
+/* Hero handoff: Artists travels over the pinned kinetic title.
    One viewport of scroll equals one complete transition into Artists. */
 .hero-sequence {
-  height: 100svh;
+  z-index: 0;
+  height: 200svh;
   min-height: 620px;
 }
 
 .hero-stage {
-  position: relative;
-  top: auto;
+  position: sticky;
+  top: 0;
   height: 100svh;
   min-height: 620px;
 }
 
+main .artists {
+  z-index: 2;
+  margin-top: -100svh;
+}
+
 @supports (animation-timeline: scroll()) {
   .hero-title span {
-    animation-range: 0 92svh;
+    animation-range: 0 100svh;
   }
 }
 
 @media (max-width: 767px) {
-  .hero-sequence,
+  .hero-sequence {
+    height: 200svh;
+  }
+
   .hero-stage {
     height: 100svh;
     min-height: 580px;
@@ -782,7 +791,7 @@ main .artists {
 
   @supports (animation-timeline: scroll()) {
     .hero-title span {
-      animation-range: 0 88svh;
+      animation-range: 0 100svh;
     }
   }
 }
