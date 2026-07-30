@@ -43,8 +43,11 @@ if(frontline){
   const syncFrontline=()=>{
     frontlineFrame=0;
     const bounds=frontline.getBoundingClientRect();
-    const revealDistance=Math.max(innerHeight*.72,1);
-    const progress=Math.max(0,Math.min(1,(innerHeight-bounds.top)/revealDistance));
+    /* Begin as soon as the section edge enters the viewport; finish while the
+       manifesto is still in the lower half, so it remains fully visible after. */
+    const revealStart=innerHeight*.98;
+    const revealEnd=innerHeight*.5;
+    const progress=Math.max(0,Math.min(1,(revealStart-bounds.top)/(revealStart-revealEnd)));
     frontline.style.setProperty("--frontline-progress",progress.toFixed(3));
   };
   const requestFrontline=()=>{
