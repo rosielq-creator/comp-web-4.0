@@ -74,25 +74,26 @@ function resizeCanvas() {
 }
 
 function ribbon(time, index) {
-  const t = time * .00025;
-  const center = height * (.18 + index * .16);
-  const amplitude = height * (.07 + index * .008);
-  const thickness = height * (.09 + index * .01);
+  const t = time * .00016;
+  const center = height * (.04 + index * .15);
+  const amplitude = height * (.105 + index * .006);
+  const thickness = height * (.105 + index * .012);
   const gradient = context.createLinearGradient(0, center, width, center + thickness);
-  const alpha = .13 - index * .012;
-  gradient.addColorStop(0, `rgba(73,89,66,${alpha * .5})`);
-  gradient.addColorStop(.48, `rgba(172,181,158,${alpha})`);
-  gradient.addColorStop(1, `rgba(55,71,51,${alpha * .35})`);
+  const alpha = .16 - index * .012;
+  gradient.addColorStop(0, `rgba(74,82,74,${alpha * .55})`);
+  gradient.addColorStop(.42, `rgba(164,166,153,${alpha})`);
+  gradient.addColorStop(.68, `rgba(112,119,108,${alpha * .82})`);
+  gradient.addColorStop(1, `rgba(43,51,45,${alpha * .42})`);
   context.beginPath();
   for (let x = -width * .08; x <= width * 1.08; x += width / 32) {
-    const y = center + Math.sin(x / width * 5 + t + index * 1.8) * amplitude
-      + Math.cos(x / width * 2.4 - t * .6 + index) * amplitude * .45;
+    const y = center + Math.sin(x / width * 4.1 + t + index * 1.54) * amplitude
+      + Math.cos(x / width * 2.15 - t * .72 + index) * amplitude * .56;
     if (x === -width * .08) context.moveTo(x, y - thickness);
     else context.lineTo(x, y - thickness);
   }
   for (let x = width * 1.08; x >= -width * .08; x -= width / 32) {
-    const y = center + Math.sin(x / width * 5 + t + index * 1.8) * amplitude
-      + Math.cos(x / width * 2.4 - t * .6 + index) * amplitude * .45;
+    const y = center + Math.sin(x / width * 4.1 + t + index * 1.54) * amplitude
+      + Math.cos(x / width * 2.15 - t * .72 + index) * amplitude * .56;
     context.lineTo(x, y + thickness);
   }
   context.closePath();
@@ -106,8 +107,15 @@ function draw(time) {
     return;
   }
   context.clearRect(0, 0, width, height);
+  const base = context.createLinearGradient(0, 0, width, height);
+  base.addColorStop(0, "#313730");
+  base.addColorStop(.38, "#171c18");
+  base.addColorStop(.7, "#232923");
+  base.addColorStop(1, "#101411");
+  context.fillStyle = base;
+  context.fillRect(0, 0, width, height);
   context.globalCompositeOperation = "screen";
-  for (let i = 0; i < 5; i += 1) ribbon(time, i);
+  for (let i = 0; i < 7; i += 1) ribbon(time, i);
   context.globalCompositeOperation = "source-over";
   frame = requestAnimationFrame(draw);
 }

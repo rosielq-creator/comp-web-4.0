@@ -29,7 +29,7 @@
   min-height: 620px;
   overflow: hidden;
   isolation: isolate;
-  background: #080a08;
+  background: #171b17;
 }
 .hero-stage #mineralCanvas {
   position: absolute;
@@ -37,16 +37,23 @@
   inset: 0;
   width: 100%;
   height: 100%;
-  opacity: .82;
-  filter: blur(8px) saturate(.72);
+  opacity: .96;
+  filter: blur(14px) saturate(.52) contrast(1.08);
 }
 .hero-stage .hero-atmosphere {
   z-index: -2;
-  inset: -10%;
-  opacity: .62;
+  inset: -12%;
+  opacity: .74;
   background:
-    radial-gradient(ellipse 55% 48% at 51% 50%, rgba(104, 120, 92, .24), transparent 70%),
-    linear-gradient(180deg, rgba(8, 10, 8, .32), #080a08);
+    radial-gradient(ellipse 74% 50% at 48% 42%, rgba(147, 151, 139, .14), transparent 72%),
+    radial-gradient(ellipse 58% 42% at 72% 76%, rgba(93, 101, 91, .18), transparent 68%),
+    linear-gradient(180deg, rgba(28, 32, 28, .14), rgba(9, 12, 10, .38));
+  mix-blend-mode: screen;
+  animation: atmosphere-drift 18s ease-in-out infinite alternate;
+}
+@keyframes atmosphere-drift {
+  from { transform: translate3d(-2.5%, -1.5%, 0) scale(1.04); }
+  to { transform: translate3d(3%, 2%, 0) scale(1.1); }
 }
 .hero-title {
   position: absolute;
