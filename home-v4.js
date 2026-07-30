@@ -36,6 +36,14 @@ const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{
 }),{threshold:.45});
 videos.forEach(video=>observer.observe(video));
 
+const frontlineLines=[...document.querySelectorAll(".frontline-line")];
+if(frontlineLines.length){
+  const lineObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{
+    if(entry.isIntersecting) entry.target.classList.add("is-visible");
+  }),{threshold:.58});
+  frontlineLines.forEach(line=>lineObserver.observe(line));
+}
+
 const canvas=document.querySelector("#mineralCanvas");
 const ctx=canvas?.getContext("2d");
 let width=0,height=0,raf=0,isHeroVisible=true;
