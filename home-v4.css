@@ -248,54 +248,25 @@ button {
 .frontline {
   --frontline-progress: 0;
   position: relative;
-  z-index: 4;
+  z-index: 1;
   display: grid;
-  min-height: 88svh;
-  margin-top: -18svh;
-  padding: clamp(150px, 24vh, 250px) 7vw clamp(120px, 16vh, 180px);
+  min-height: 76svh;
+  margin-top: 0;
+  padding: clamp(28px, 4vh, 48px) 7vw clamp(110px, 15vh, 170px);
   align-items: start;
   overflow: visible;
-  background:
-    linear-gradient(180deg, #080a08 0%, #10140f 24%, #0b0e0b 58%, #090b09 100%);
+  background: #080a08;
   color: var(--ivory);
   isolation: isolate;
 }
 .frontline::after {
-  content: "";
-  position: absolute;
-  z-index: -3;
-  right: 0;
-  bottom: 100%;
-  left: 0;
-  height: 32vh;
-  background: linear-gradient(180deg, rgba(8, 10, 8, 0), rgba(8, 10, 8, .82) 72%, #080a08);
-  pointer-events: none;
+  content: none;
 }
 .frontline::before {
-  content: "";
-  position: absolute;
-  z-index: -2;
-  inset: 0;
-  background:
-    radial-gradient(ellipse 78% 34% at 50% -4%, rgba(194, 200, 184, 0.2), transparent 68%),
-    radial-gradient(ellipse 62% 32% at 50% 24%, rgba(102, 113, 91, 0.18), transparent 72%),
-    linear-gradient(180deg, rgba(8, 10, 8, 0) 0%, rgba(9, 11, 9, 0.7) 46%, #090b09 100%);
-  pointer-events: none;
+  content: none;
 }
 .frontline-flow {
-  position: absolute;
-  z-index: -1;
-  top: -30%;
-  left: 50%;
-  width: 110vw;
-  height: 76vh;
-  background:
-    radial-gradient(ellipse at 50% 25%, rgba(194, 200, 184, 0.18), transparent 58%),
-    radial-gradient(ellipse at 46% 62%, rgba(111, 128, 98, 0.2), transparent 65%);
-  filter: blur(34px);
-  opacity: calc(.45 + var(--frontline-progress) * .55);
-  transform: translate3d(-50%, calc(-8% + var(--frontline-progress) * 16%), 0) scale(calc(.98 + var(--frontline-progress) * .08));
-  animation: frontline-drift 12s ease-in-out infinite alternate;
+  display: none;
 }
 .frontline-kicker {
   position: relative;
@@ -316,19 +287,24 @@ button {
   position: relative;
   z-index: 1;
   width: min(100%, 920px);
-  margin: clamp(24px, 3.5vh, 42px) auto 0;
+  margin: clamp(20px, 3vh, 34px) auto 0;
   color: #fff;
   font-family: "Saira", sans-serif !important;
   font-size: clamp(22px, 2.3vw, 41px);
   font-weight: 600;
   line-height: 1.16;
   letter-spacing: -0.03em;
-  opacity: var(--frontline-progress);
-  transform: translateY(calc((1 - var(--frontline-progress)) * 26px));
+  opacity: 1;
 }
 .frontline-manifesto span {
+  --phrase-progress: 0;
+  display: block;
   color: #fff;
   font: inherit;
+  opacity: var(--phrase-progress);
+  filter: blur(calc((1 - var(--phrase-progress)) * 7px));
+  transform: translateY(calc((1 - var(--phrase-progress)) * 24px));
+  transition: opacity 80ms linear, filter 80ms linear, transform 80ms linear;
 }
 
 @keyframes frontline-drift {

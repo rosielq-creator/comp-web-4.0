@@ -39,15 +39,21 @@ videos.forEach(video=>observer.observe(video));
 const hero=document.querySelector(".hero");
 const frontline=document.querySelector(".frontline");
 if(frontline){
+  const phrases=[...frontline.querySelectorAll(".frontline-manifesto > span")];
   let frontlineFrame=0;
   const syncFrontline=()=>{
     frontlineFrame=0;
-    /* Tie the reveal directly to the first part of the page scroll. This makes
-       the manifesto respond immediately in both directions instead of waiting
-       for the next section to enter the viewport. */
-    const revealDistance=Math.max(260,innerHeight*.52);
-    const progress=Math.max(0,Math.min(1,scrollY/revealDistance));
+    const bounds=frontline.getBoundingClientRect();
+    const start=innerHeight*.96;
+    const distance=Math.max(360,innerHeight*.68);
+    const progress=Math.max(0,Math.min(1,(start-bounds.top)/distance));
     frontline.style.setProperty("--frontline-progress",progress.toFixed(3));
+    phrases.forEach((phrase,index)=>{
+      const segmentStart=index/phrases.length;
+      const segmentLength=.44;
+      const phraseProgress=Math.max(0,Math.min(1,(progress-segmentStart)/segmentLength));
+      phrase.style.setProperty("--phrase-progress",phraseProgress.toFixed(3));
+    });
   };
   const requestFrontline=()=>{
     if(!frontlineFrame) frontlineFrame=requestAnimationFrame(syncFrontline);
