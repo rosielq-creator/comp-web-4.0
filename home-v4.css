@@ -186,18 +186,17 @@ button {
 .hero-wordmark {
   position: absolute;
   z-index: 2;
-  left: clamp(18px, 1.6vw, 30px);
-  right: clamp(18px, 1.6vw, 30px);
-  bottom: -5.2vw;
-  height: clamp(220px, 33vw, 620px);
-}
-.hero-wordmark .official-logo {
+  left: 50%;
+  bottom: clamp(56px, 7vh, 88px);
   width: 100%;
-  height: 100%;
-  aspect-ratio: auto;
-  background: var(--brand-green);
-  -webkit-mask-size: 100% auto;
-  mask-size: 100% auto;
+  color: var(--brand-green);
+  font-size: clamp(54px, 7.6vw, 122px);
+  font-weight: 500;
+  line-height: 0.82;
+  letter-spacing: -0.075em;
+  text-align: center;
+  white-space: nowrap;
+  transform: translateX(-50%);
 }
 .hero-meta {
   position: absolute;
@@ -535,10 +534,10 @@ footer {
     font-size: clamp(16px, 4.6vw, 20px);
   }
   .hero-wordmark {
-    left: 12px;
-    right: 12px;
-    bottom: -5vw;
-    height: 45vw;
+    bottom: 46px;
+    width: auto;
+    font-size: clamp(40px, 11.6vw, 52px);
+    letter-spacing: -0.065em;
   }
   .hero-meta {
     display: none;
