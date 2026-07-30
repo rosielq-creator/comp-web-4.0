@@ -8,11 +8,11 @@
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
 }
 @font-face {
-  font-family: "HF Sharp";
-  src: url("assets/fonts/HFSharp-2.ttf") format("truetype");
+  font-family: "Geom";
+  src: url("assets/fonts/geom/Geom-Variable.woff2") format("woff2");
   font-display: swap;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 300 900;
 }
 * {
   box-sizing: border-box;
@@ -205,12 +205,11 @@ button {
   bottom: clamp(56px, 7vh, 88px);
   width: min(94vw, 1400px);
   color: var(--brand-green);
-  font-family: "HF Sharp", "Arial Narrow", "Helvetica Neue", sans-serif;
+  font-family: "Geom", "Helvetica Neue", sans-serif;
   font-size: clamp(44px, 6.1vw, 98px);
-  font-weight: 400;
+  font-weight: 470;
   line-height: 0.86;
-  letter-spacing: -0.055em;
-  font-stretch: condensed;
+  letter-spacing: -0.06em;
   text-align: center;
   white-space: nowrap;
   transform: translateX(-50%);
