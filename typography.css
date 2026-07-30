@@ -7,6 +7,14 @@
 }
 
 @font-face {
+  font-family: "Mona Sans";
+  src: url("assets/fonts/mona-sans/MonaSans-Variable.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 200 900;
+  font-display: swap;
+}
+
+@font-face {
   font-family: "Saira";
   src: url("assets/fonts/saira/Saira-Bold.woff2") format("woff2");
   font-style: normal;
@@ -42,7 +50,7 @@ body :where(h1, h2, h3, h4, h5, h6) :where(span, strong, em, small) {
   font-stretch: normal;
 }
 
-/* Saira SemiBold is the shared voice for manifesto and supporting copy. */
+/* Mona Sans gives manifesto and supporting copy a calmer editorial rhythm. */
 body :where(
   .artists-manifesto,
   .hero-meta,
@@ -67,8 +75,8 @@ body :where(
   .contact p,
   footer
 ) :where(p, span, strong, em, small, dt, dd, a) {
-  font-family: var(--sans) !important;
-  font-weight: 600;
+  font-family: "Mona Sans", var(--sans) !important;
+  font-weight: 450;
   font-stretch: normal;
   letter-spacing: -0.012em;
 }

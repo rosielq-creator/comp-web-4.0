@@ -17,6 +17,12 @@ new IntersectionObserver(([entry]) => {
 
 const tabs = [...document.querySelectorAll(".artist-name[data-artist]")];
 let selectedArtist = -1;
+artistData.forEach(({ image }) => {
+  const preload = new Image();
+  preload.decoding = "async";
+  preload.src = image;
+  preload.decode?.().catch(() => {});
+});
 function selectArtist(index) {
   if (index === selectedArtist) return;
   selectedArtist = index;
@@ -33,12 +39,8 @@ function selectArtist(index) {
   }
   document.querySelector("[data-artist-role]").innerHTML = current.role.replaceAll("<br>", " / ");
   const number = String(index + 1).padStart(2, "0");
-  const count = document.querySelector("[data-artist-count]");
   const shortNumber = document.querySelector("[data-artist-short-number]");
-  const progress = document.querySelector("[data-artist-progress]");
-  if (count) count.textContent = `${number} / 05`;
   if (shortNumber) shortNumber.textContent = number;
-  if (progress) progress.style.transform = `scaleX(${index + 1})`;
   document.querySelector("[data-artist-link]").href = current.href;
   document.querySelector("[data-artist-link]").setAttribute("aria-label", `View ${current.name} profile`);
   tabs.forEach((tab, i) => {
@@ -86,11 +88,11 @@ function ribbon(time, index) {
   const amplitude = height * (.075 + index * .008);
   const thickness = height * (.18 + index * .018);
   const gradient = context.createLinearGradient(0, center - thickness, 0, center + thickness);
-  const alpha = .17 - index * .018;
+  const alpha = .26 - index * .022;
   gradient.addColorStop(0, "rgba(37,43,38,0)");
-  gradient.addColorStop(.34, `rgba(101,109,99,${alpha * .64})`);
-  gradient.addColorStop(.54, `rgba(178,181,168,${alpha})`);
-  gradient.addColorStop(.72, `rgba(81,90,81,${alpha * .7})`);
+  gradient.addColorStop(.30, `rgba(78,104,70,${alpha * .68})`);
+  gradient.addColorStop(.52, `rgba(112,145,94,${alpha})`);
+  gradient.addColorStop(.73, `rgba(65,91,59,${alpha * .78})`);
   gradient.addColorStop(1, "rgba(26,32,27,0)");
   context.beginPath();
   for (let x = -width * .08; x <= width * 1.08; x += width / 32) {
@@ -116,10 +118,10 @@ function draw(time) {
   }
   context.clearRect(0, 0, width, height);
   const base = context.createLinearGradient(0, 0, width, height);
-  base.addColorStop(0, "#252b26");
-  base.addColorStop(.34, "#101511");
-  base.addColorStop(.68, "#303630");
-  base.addColorStop(1, "#111612");
+  base.addColorStop(0, "#253225");
+  base.addColorStop(.34, "#0c140d");
+  base.addColorStop(.68, "#283a27");
+  base.addColorStop(1, "#0c150e");
   context.fillStyle = base;
   context.fillRect(0, 0, width, height);
   context.globalCompositeOperation = "screen";

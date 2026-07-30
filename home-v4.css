@@ -38,15 +38,15 @@
   width: 100%;
   height: 100%;
   opacity: .96;
-  filter: blur(14px) saturate(.52) contrast(1.08);
+  filter: blur(17px) saturate(.82) contrast(1.08);
 }
 .hero-stage .hero-atmosphere {
   z-index: -2;
   inset: -12%;
   opacity: .74;
   background:
-    radial-gradient(ellipse 74% 50% at 48% 42%, rgba(147, 151, 139, .14), transparent 72%),
-    radial-gradient(ellipse 58% 42% at 72% 76%, rgba(93, 101, 91, .18), transparent 68%),
+    radial-gradient(ellipse 74% 50% at 48% 42%, rgba(118, 151, 102, .20), transparent 72%),
+    radial-gradient(ellipse 58% 42% at 72% 76%, rgba(76, 111, 68, .22), transparent 68%),
     linear-gradient(180deg, rgba(28, 32, 28, .14), rgba(9, 12, 10, .38));
   mix-blend-mode: screen;
   animation: atmosphere-drift 18s ease-in-out infinite alternate;
@@ -516,7 +516,7 @@
   line-height: .82;
   letter-spacing: -.065em;
   text-decoration: none;
-  transition: color 280ms var(--ease), transform 420ms var(--ease);
+  transition: color 110ms ease-out, transform 150ms ease-out;
 }
 .artist-name:hover,
 .artist-name:focus-visible,
@@ -545,7 +545,7 @@
   inset: 0;
   opacity: 0;
   transform: scale(.985);
-  transition: opacity 420ms var(--ease), transform 700ms var(--ease);
+  transition: opacity 150ms ease-out, transform 180ms ease-out;
 }
 .artist-preview-layer.is-visible {
   opacity: 1;
@@ -649,7 +649,7 @@ main .artists {
 .artists-manifesto-head {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   gap: 18px;
   margin-bottom: clamp(34px, 5vh, 58px);
   color: var(--ivory);
@@ -667,33 +667,28 @@ main .artists {
   background: var(--brand-green);
 }
 .artists-manifesto-head span { margin-right: auto; }
-.artists-manifesto-head b {
-  color: rgba(231, 230, 221, .45);
-  font-weight: 600;
-  letter-spacing: .09em;
-  white-space: nowrap;
-}
 .artists-manifesto p {
   margin: 0;
 }
 .artists-manifesto p + p {
   margin-top: 2.15em;
 }
-.artists-progress {
-  position: relative;
-  width: 100%;
-  height: 1px;
-  margin-top: clamp(42px, 6vh, 68px);
-  overflow: hidden;
-  background: rgba(231, 230, 221, .18);
+.artists-view-more {
+  display: inline-flex;
+  gap: 12px;
+  margin-top: clamp(34px, 5vh, 54px);
+  padding-bottom: 6px;
+  color: var(--ivory);
+  border-bottom: 1px solid rgba(231, 230, 221, .45);
+  font-size: 11px;
+  letter-spacing: .04em;
+  text-decoration: none;
+  transition: border-color 120ms ease, gap 150ms ease;
 }
-.artists-progress i {
-  display: block;
-  width: 20%;
-  height: 100%;
-  background: var(--ivory);
-  transform-origin: left center;
-  transition: transform 480ms var(--ease);
+.artists-view-more:hover,
+.artists-view-more:focus-visible {
+  gap: 18px;
+  border-color: var(--brand-green);
 }
 .artist-name-list {
   grid-column: 2;
@@ -713,7 +708,7 @@ main .artists {
 }
 .artist-name span {
   display: block;
-  transition: transform 500ms var(--ease), letter-spacing 500ms var(--ease);
+  transition: transform 150ms ease-out, letter-spacing 150ms ease-out;
 }
 .artist-name:hover span,
 .artist-name:focus-visible span,
