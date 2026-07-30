@@ -74,26 +74,27 @@ function resizeCanvas() {
 }
 
 function ribbon(time, index) {
-  const t = time * .00016;
-  const center = height * (.04 + index * .15);
-  const amplitude = height * (.105 + index * .006);
-  const thickness = height * (.105 + index * .012);
-  const gradient = context.createLinearGradient(0, center, width, center + thickness);
-  const alpha = .16 - index * .012;
-  gradient.addColorStop(0, `rgba(74,82,74,${alpha * .55})`);
-  gradient.addColorStop(.42, `rgba(164,166,153,${alpha})`);
-  gradient.addColorStop(.68, `rgba(112,119,108,${alpha * .82})`);
-  gradient.addColorStop(1, `rgba(43,51,45,${alpha * .42})`);
+  const t = time * .000095;
+  const center = height * (.12 + index * .255);
+  const amplitude = height * (.075 + index * .008);
+  const thickness = height * (.18 + index * .018);
+  const gradient = context.createLinearGradient(0, center - thickness, 0, center + thickness);
+  const alpha = .17 - index * .018;
+  gradient.addColorStop(0, "rgba(37,43,38,0)");
+  gradient.addColorStop(.34, `rgba(101,109,99,${alpha * .64})`);
+  gradient.addColorStop(.54, `rgba(178,181,168,${alpha})`);
+  gradient.addColorStop(.72, `rgba(81,90,81,${alpha * .7})`);
+  gradient.addColorStop(1, "rgba(26,32,27,0)");
   context.beginPath();
   for (let x = -width * .08; x <= width * 1.08; x += width / 32) {
-    const y = center + Math.sin(x / width * 4.1 + t + index * 1.54) * amplitude
-      + Math.cos(x / width * 2.15 - t * .72 + index) * amplitude * .56;
+    const y = center + Math.sin(x / width * 2.25 + t + index * 1.75) * amplitude
+      + Math.cos(x / width * 1.35 - t * .58 + index) * amplitude * .42;
     if (x === -width * .08) context.moveTo(x, y - thickness);
     else context.lineTo(x, y - thickness);
   }
   for (let x = width * 1.08; x >= -width * .08; x -= width / 32) {
-    const y = center + Math.sin(x / width * 4.1 + t + index * 1.54) * amplitude
-      + Math.cos(x / width * 2.15 - t * .72 + index) * amplitude * .56;
+    const y = center + Math.sin(x / width * 2.25 + t + index * 1.75) * amplitude
+      + Math.cos(x / width * 1.35 - t * .58 + index) * amplitude * .42;
     context.lineTo(x, y + thickness);
   }
   context.closePath();
@@ -108,14 +109,14 @@ function draw(time) {
   }
   context.clearRect(0, 0, width, height);
   const base = context.createLinearGradient(0, 0, width, height);
-  base.addColorStop(0, "#313730");
-  base.addColorStop(.38, "#171c18");
-  base.addColorStop(.7, "#232923");
-  base.addColorStop(1, "#101411");
+  base.addColorStop(0, "#252b26");
+  base.addColorStop(.34, "#101511");
+  base.addColorStop(.68, "#303630");
+  base.addColorStop(1, "#111612");
   context.fillStyle = base;
   context.fillRect(0, 0, width, height);
   context.globalCompositeOperation = "screen";
-  for (let i = 0; i < 7; i += 1) ribbon(time, i);
+  for (let i = 0; i < 4; i += 1) ribbon(time, i);
   context.globalCompositeOperation = "source-over";
   frame = requestAnimationFrame(draw);
 }
