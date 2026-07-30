@@ -15,40 +15,41 @@ new IntersectionObserver(([entry]) => {
   header?.classList.toggle("is-scrolled", !entry.isIntersecting);
 }).observe(headerMarker);
 
-const tabs = [...document.querySelectorAll("[data-artist]")];
+const tabs = [...document.querySelectorAll(".artist-name[data-artist]")];
 let selectedArtist = -1;
 function selectArtist(index) {
   if (index === selectedArtist) return;
   selectedArtist = index;
   const current = artistData[index];
-  const image = document.querySelector("[data-artist-image]");
-  image.style.opacity = "0";
-  image.style.transform = index % 2 ? "translateY(3%) scale(.98)" : "translateY(-3%) scale(.98)";
-  window.setTimeout(() => {
-    image.src = current.image;
-    image.alt = current.name;
-    image.style.opacity = "1";
-    image.style.transform = "";
-  }, 180);
-  document.querySelector("[data-artist-name]").textContent = current.name;
-  document.querySelector("[data-artist-role]").innerHTML = current.role;
-  document.querySelector("[data-artist-index]").textContent = String(index + 1).padStart(2, "0");
-  document.querySelector("[data-ghost-name]").textContent = current.name.toUpperCase();
+  const preview = document.querySelector(".artist-preview");
+  const currentLayer = preview?.querySelector(".artist-preview-layer.is-visible");
+  const nextLayer = preview?.querySelector(".artist-preview-layer:not(.is-visible)");
+  const nextImage = nextLayer?.querySelector("img");
+  if (nextImage && nextLayer && currentLayer) {
+    nextImage.src = current.image;
+    nextImage.alt = "";
+    nextLayer.classList.add("is-visible");
+    currentLayer.classList.remove("is-visible");
+  }
+  document.querySelector("[data-artist-role]").innerHTML = current.role.replaceAll("<br>", " / ");
   document.querySelector("[data-artist-link]").href = current.href;
   document.querySelector("[data-artist-link]").setAttribute("aria-label", `View ${current.name} profile`);
-  document.querySelector("[data-artist-link-text]").href = current.href;
-  tabs.forEach((tab, i) => tab.classList.toggle("is-active", i === index));
+  tabs.forEach((tab, i) => {
+    tab.classList.toggle("is-active", i === index);
+    tab.setAttribute("aria-current", i === index ? "true" : "false");
+  });
 }
-tabs.forEach((tab, index) => tab.addEventListener("click", () => selectArtist(index)));
+tabs.forEach((tab, index) => {
+  tab.addEventListener("pointerenter", () => selectArtist(index));
+  tab.addEventListener("focus", () => selectArtist(index));
+  tab.addEventListener("click", (event) => {
+    if (matchMedia("(hover: none)").matches && selectedArtist !== index) {
+      event.preventDefault();
+      selectArtist(index);
+    }
+  });
+});
 selectArtist(0);
-
-const stepObserver = new IntersectionObserver(entries => {
-  const visible = entries
-    .filter(entry => entry.isIntersecting)
-    .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-  if (visible) selectArtist(Number(visible.target.dataset.step));
-}, { threshold: [.2, .45, .7] });
-document.querySelectorAll("[data-step]").forEach(step => stepObserver.observe(step));
 
 const videos = [...document.querySelectorAll(".work-media video")];
 const videoObserver = new IntersectionObserver(entries => entries.forEach(entry => {

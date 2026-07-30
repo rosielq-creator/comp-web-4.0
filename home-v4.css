@@ -410,6 +410,223 @@
   .hero-roster { display: none; }
   .artist-image img { transition: none; }
 }
+
+/* 2026-07-30: kinetic-type hero and hover-led artist roster. */
+.hero-sequence {
+  height: 155svh;
+}
+.hero-title {
+  z-index: 1;
+  inset: 17svh 1.7vw auto;
+}
+.hero-portrait-wrap,
+.hero-roster {
+  display: none;
+}
+@supports (animation-timeline: scroll()) {
+  .hero-title {
+    animation: none;
+  }
+  .hero-title span {
+    animation-duration: 1ms;
+    animation-timing-function: linear;
+    animation-fill-mode: both;
+    animation-timeline: scroll(root);
+    animation-range: 10svh 55svh;
+    will-change: transform, opacity;
+  }
+  .hero-title span:nth-child(1) { animation-name: hero-word-left; }
+  .hero-title span:nth-child(2) { animation-name: hero-word-right; }
+  .hero-title span:nth-child(3) { animation-name: hero-word-down; }
+}
+@keyframes hero-word-left {
+  to { opacity: 0; transform: translate3d(-42vw, -12vh, 0) rotate(-4deg); }
+}
+@keyframes hero-word-right {
+  to { opacity: 0; transform: translate3d(48vw, 3vh, 0) rotate(3deg); }
+}
+@keyframes hero-word-down {
+  to { opacity: 0; transform: translate3d(12vw, 28vh, 0) rotate(-2deg); }
+}
+
+.artists {
+  height: auto;
+  min-height: 100svh;
+  background: #080a08;
+}
+.artists-shell {
+  display: grid;
+  grid-template-columns: minmax(0, 3fr) minmax(300px, 2fr);
+  grid-template-rows: auto 1fr;
+  column-gap: clamp(42px, 6vw, 112px);
+  width: 100%;
+  min-height: 100svh;
+  padding: clamp(104px, 13vh, 148px) clamp(20px, 3vw, 52px) clamp(52px, 7vh, 88px);
+}
+.artists-kicker {
+  grid-column: 1 / -1;
+  align-self: start;
+  margin: 0 0 clamp(34px, 5vh, 60px);
+  color: rgba(231, 230, 221, .68);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .04em;
+}
+.artists-shell > .sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+.artists-kicker::before {
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  margin-right: 9px;
+  border-radius: 50%;
+  background: var(--brand-green);
+  vertical-align: .08em;
+}
+.artist-name-list {
+  grid-column: 1;
+  grid-row: 2;
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  min-width: 0;
+}
+.artist-name {
+  display: block;
+  width: max-content;
+  max-width: 100%;
+  color: rgba(231, 230, 221, .2);
+  font-family: "Saira", sans-serif;
+  font-size: clamp(62px, 7.25vw, 136px);
+  font-weight: 700;
+  line-height: .82;
+  letter-spacing: -.065em;
+  text-decoration: none;
+  transition: color 280ms var(--ease), transform 420ms var(--ease);
+}
+.artist-name:hover,
+.artist-name:focus-visible,
+.artist-name.is-active {
+  color: var(--ivory);
+  transform: translateX(clamp(5px, .7vw, 12px));
+}
+.artist-name:focus-visible {
+  outline: 2px solid var(--brand-green);
+  outline-offset: 5px;
+}
+.artist-preview {
+  grid-column: 2;
+  grid-row: 2;
+  position: relative;
+  align-self: center;
+  width: 100%;
+  height: min(64svh, 700px);
+  min-height: 470px;
+  overflow: hidden;
+  color: var(--ivory);
+  background: #121510;
+}
+.artist-preview-layer {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transform: scale(.985);
+  transition: opacity 420ms var(--ease), transform 700ms var(--ease);
+}
+.artist-preview-layer.is-visible {
+  opacity: 1;
+  transform: scale(1);
+}
+.artist-preview-layer img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 24%;
+  filter: saturate(.72) contrast(1.04);
+}
+.artist-preview::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 64%, rgba(8, 10, 8, .72));
+  pointer-events: none;
+}
+.artist-preview-meta {
+  position: absolute;
+  z-index: 2;
+  right: 18px;
+  bottom: 16px;
+  left: 18px;
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 20px;
+  font-size: 11px;
+  line-height: 1.3;
+}
+.artist-preview-meta b {
+  max-width: 62%;
+  font-weight: 600;
+}
+.artist-preview-meta i {
+  flex: none;
+  font-style: normal;
+}
+
+@media (max-width: 767px) {
+  .hero-sequence { height: 135svh; }
+  .hero-title { inset-top: 22svh; }
+  .artists-shell {
+    display: flex;
+    flex-direction: column;
+    min-height: 100svh;
+    padding: 104px 18px 46px;
+  }
+  .artists-kicker { margin-bottom: 30px; }
+  .artist-name-list { width: 100%; }
+  .artist-name {
+    width: 100%;
+    font-size: clamp(54px, 16vw, 78px);
+    line-height: .88;
+  }
+  .artist-preview {
+    width: 100%;
+    height: 48svh;
+    min-height: 350px;
+    margin-top: 34px;
+  }
+}
+
+/* Final cascade lock for the approved hero-to-roster structure. */
+main .artists {
+  height: auto;
+  min-height: 100svh;
+  padding: 0;
+}
+@media (max-width: 800px) {
+  main .artists {
+    height: auto;
+    min-height: 100svh;
+    padding: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-title span {
+    animation: none !important;
+  }
+  .artist-name,
+  .artist-preview-layer {
+    transition: none;
+  }
+}
 * {
   box-sizing: border-box;
 }
@@ -1319,5 +1536,19 @@ main .artist-tabs button {
   .frontline-manifesto {
     opacity: 1;
     transform: none;
+  }
+}
+
+/* Approved structure: override obsolete six-screen artist sequence. */
+main .artists {
+  height: auto;
+  min-height: 100svh;
+  padding: 0;
+}
+@media (max-width: 800px) {
+  main .artists {
+    height: auto;
+    min-height: 100svh;
+    padding: 0;
   }
 }

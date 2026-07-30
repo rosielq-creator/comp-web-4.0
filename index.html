@@ -6,7 +6,7 @@
   <meta name="description" content="Greentomato represents next-generation AI artists and produces AI-native campaigns for brands.">
   <meta name="theme-color" content="#0b0d0a">
   <title>Greentomato | Next-generation artists</title>
-  <link rel="stylesheet" href="home-v4.css?v=20260730-18">
+  <link rel="stylesheet" href="home-v4.css?v=20260730-19">
   <link rel="stylesheet" href="typography.css?v=20260730-5">
 </head>
 <body>
@@ -32,17 +32,6 @@
         <div class="hero-title" id="hero-title" aria-label="Next generation talents">
           <span>NEXT</span><span>GENERATION</span><span>TALENTS</span>
         </div>
-        <div class="hero-portrait-wrap">
-          <div class="hero-film" aria-hidden="true"></div>
-          <img class="hero-portrait" src="assets/profiles/maya/black-tailoring.png" alt="Maya, Greentomato artist">
-        </div>
-        <div class="hero-roster" aria-hidden="true">
-          <img src="assets/profiles/maya/black-tailoring.png" alt="">
-          <img src="assets/profiles/amber/night-portrait.png" alt="">
-          <img src="assets/profiles/ooona/hero.png" alt="">
-          <img src="assets/profiles/noah/black-portrait.png" alt="">
-          <img src="assets/mario-portrait.png" alt="">
-        </div>
         <div class="hero-meta">
           <p>AI TALENT AGENCY</p>
           <div>
@@ -55,30 +44,25 @@
     </section>
 
     <section class="artists" id="artists" aria-labelledby="artists-title">
-      <div class="artists-intro">
-        <h2 id="artists-title">Five identities.<br>Five original worlds.</h2>
-      </div>
-      <div class="artist-sticky">
-        <div class="artist-ghost" aria-hidden="true"><strong data-ghost-name>MAYA</strong></div>
-        <a class="artist-image" data-artist-link href="maya.html" aria-label="View Maya profile">
-          <img data-artist-image src="assets/profiles/maya/pink-editorial.png" alt="Maya">
+      <div class="artists-shell">
+        <p class="artists-kicker">Meet the artists</p>
+        <h2 class="sr-only" id="artists-title">Five identities. Five original worlds.</h2>
+        <div class="artist-name-list" role="list" aria-label="Greentomato artists">
+          <a class="artist-name is-active" data-artist="0" href="maya.html" role="listitem"><span>Maya</span></a>
+          <a class="artist-name" data-artist="1" href="amber.html" role="listitem"><span>Amber</span></a>
+          <a class="artist-name" data-artist="2" href="ooona.html" role="listitem"><span>Ooona</span></a>
+          <a class="artist-name" data-artist="3" href="noah.html" role="listitem"><span>Noah</span></a>
+          <a class="artist-name" data-artist="4" href="mario.html" role="listitem"><span>Mario</span></a>
+        </div>
+        <a class="artist-preview" data-artist-link href="maya.html" aria-label="View Maya profile">
+          <span class="artist-preview-layer is-visible" aria-hidden="true">
+            <img data-artist-image src="assets/profiles/maya/pink-editorial.png" alt="">
+          </span>
+          <span class="artist-preview-layer" aria-hidden="true">
+            <img data-artist-image-next src="assets/profiles/maya/pink-editorial.png" alt="">
+          </span>
+          <span class="artist-preview-meta"><b data-artist-role>Luxury fashion / Art direction</b><i>View profile ↗</i></span>
         </a>
-        <div class="artist-info">
-          <p><span data-artist-index>01</span> / 05</p>
-          <h3 data-artist-name>Maya</h3>
-          <p data-artist-role>Luxury fashion<br>Art direction<br>Digital storytelling</p>
-          <a data-artist-link-text href="maya.html">View profile ↗</a>
-        </div>
-        <div class="artist-tabs" role="tablist" aria-label="Select an artist">
-          <button class="is-active" data-artist="0" type="button">01 Maya</button>
-          <button data-artist="1" type="button">02 Amber</button>
-          <button data-artist="2" type="button">03 Ooona</button>
-          <button data-artist="3" type="button">04 Noah</button>
-          <button data-artist="4" type="button">05 Mario</button>
-        </div>
-      </div>
-      <div class="artist-steps" aria-hidden="true">
-        <i data-step="0"></i><i data-step="1"></i><i data-step="2"></i><i data-step="3"></i><i data-step="4"></i>
       </div>
     </section>
 
@@ -159,6 +143,6 @@
     </section>
   </main>
   <footer><span class="official-logo" role="img" aria-label="Greentomato"></span><p>Hong Kong / Global · © 2026</p></footer>
-  <script src="home-v4.js?v=20260730-14"></script>
+  <script src="home-v4.js?v=20260730-15"></script>
 </body>
 </html>
