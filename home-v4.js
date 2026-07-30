@@ -1,9 +1,9 @@
 const artistData = [
-  { name: "Maya", role: "Luxury fashion<br>Art direction<br>Digital storytelling", image: "assets/profiles/maya/pink-editorial.png", href: "maya.html" },
-  { name: "Amber", role: "Music<br>Fashion<br>Culture", image: "assets/profiles/amber/night-portrait.png", href: "amber.html" },
-  { name: "Ooona", role: "Beauty<br>Wellness<br>Spirit", image: "assets/profiles/ooona/hero.png", href: "ooona.html" },
-  { name: "Noah", role: "Film<br>Fashion<br>Culture", image: "assets/profiles/noah/black-portrait.png", href: "noah.html" },
-  { name: "Mario", role: "Lifestyle<br>Sport<br>Fashion", image: "assets/mario-portrait.png", href: "mario.html" }
+  { name: "Maya", role: "Luxury fashion<br>Art direction<br>Digital storytelling", image: "assets/artist-previews/maya.webp", href: "maya.html" },
+  { name: "Amber", role: "Music<br>Fashion<br>Culture", image: "assets/artist-previews/amber.webp", href: "amber.html" },
+  { name: "Ooona", role: "Beauty<br>Wellness<br>Spirit", image: "assets/artist-previews/ooona.webp", href: "ooona.html" },
+  { name: "Noah", role: "Film<br>Fashion<br>Culture", image: "assets/artist-previews/noah.webp", href: "noah.html" },
+  { name: "Mario", role: "Lifestyle<br>Sport<br>Fashion", image: "assets/artist-previews/mario.webp", href: "mario.html" }
 ];
 
 const header = document.querySelector("[data-header]");
