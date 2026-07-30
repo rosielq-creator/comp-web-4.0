@@ -203,10 +203,14 @@ button {
   z-index: 2;
   left: 50%;
   bottom: clamp(56px, 7vh, 88px);
-  width: min(94vw, 1400px);
+  display: flex;
+  width: min(96vw, 1540px);
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.75em;
   color: var(--brand-green);
   font-family: "Geom", "Helvetica Neue", sans-serif;
-  font-size: clamp(44px, 6.1vw, 98px);
+  font-size: clamp(56px, 7.6vw, 122px);
   font-weight: 470;
   line-height: 0.86;
   letter-spacing: -0.06em;
@@ -552,8 +556,9 @@ footer {
   }
   .hero-wordmark {
     bottom: 46px;
-    width: auto;
-    font-size: clamp(40px, 11.6vw, 52px);
+    width: 94vw;
+    gap: 0.6em;
+    font-size: clamp(42px, 12.4vw, 58px);
     letter-spacing: -0.065em;
   }
   .hero-meta {
