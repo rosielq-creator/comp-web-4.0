@@ -46,12 +46,12 @@ function resize(){
   height=canvas.height=innerHeight*ratio;
 }
 function ribbon(time,index){
-  const t=time*.00017;
+  const t=time*.00062;
   const center=height*(.18+index*.13);
-  const amplitude=height*(.07+index*.008);
+  const amplitude=height*(.095+index*.01);
   const thickness=height*(.12+index*.012);
   const gradient=ctx.createLinearGradient(0,center-thickness,width,center+thickness);
-  const alpha=.12-index*.012;
+  const alpha=.18-index*.015;
   gradient.addColorStop(0,`rgba(91,108,82,${alpha*.45})`);
   gradient.addColorStop(.48,`rgba(182,190,170,${alpha})`);
   gradient.addColorStop(1,`rgba(63,80,58,${alpha*.35})`);

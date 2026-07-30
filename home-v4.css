@@ -141,7 +141,7 @@ button {
     radial-gradient(ellipse 40% 28% at 50% 42%, rgba(6, 8, 6, 0.96), transparent 78%),
     linear-gradient(180deg, #6f746d 0%, #30342f 22%, #0a0c0a 49%, #171b16 67%, #080a08 100%);
   filter: contrast(1.08);
-  animation: mineral-drift 14s cubic-bezier(0.45, 0, 0.55, 1) infinite alternate;
+  animation: mineral-drift 11s cubic-bezier(0.45, 0, 0.55, 1) infinite alternate;
 }
 .hero-atmosphere:before {
   content: "";
@@ -151,7 +151,7 @@ button {
   opacity: 0.24;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.86' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.62'/%3E%3C/svg%3E");
   mix-blend-mode: soft-light;
-  animation: mineral-grain 9s steps(8, end) infinite;
+  animation: mineral-grain 7s steps(8, end) infinite;
 }
 .hero-atmosphere:after {
   content: "";
