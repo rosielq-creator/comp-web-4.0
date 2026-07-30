@@ -42,15 +42,20 @@ let width=0,height=0,raf=0;
 function resize(){width=canvas.width=innerWidth*devicePixelRatio;height=canvas.height=innerHeight*devicePixelRatio}
 function draw(time){
   ctx.clearRect(0,0,width,height);
-  const t=time*.00018;
-  for(let i=0;i<4;i++){
-    const x=width*(.18+i*.22+Math.sin(t+i)*.04),y=height*(.22+Math.cos(t*.8+i)*.16);
-    const r=Math.max(width,height)*(.2+i*.025);
+  const t=time*.00012;
+  ctx.globalCompositeOperation="screen";
+  for(let i=0;i<7;i++){
+    const phase=t+i*1.37;
+    const x=width*(.5+Math.sin(phase*.83+i)*(.22+i*.008));
+    const y=height*(.46+Math.cos(phase*.61+i*.72)*(.18+i*.006));
+    const r=Math.max(width,height)*(.2+i*.018);
     const g=ctx.createRadialGradient(x,y,0,x,y,r);
-    g.addColorStop(0,`rgba(${80+i*12},${100+i*10},${74+i*8},${.16-i*.02})`);
+    g.addColorStop(0,`rgba(${78+i*7},${94+i*8},${72+i*6},${.15-i*.011})`);
+    g.addColorStop(.46,`rgba(${56+i*5},${70+i*6},${52+i*4},${.08-i*.006})`);
     g.addColorStop(1,"rgba(11,13,10,0)");
     ctx.fillStyle=g;ctx.fillRect(0,0,width,height);
   }
+  ctx.globalCompositeOperation="source-over";
   raf=requestAnimationFrame(draw);
 }
 if(canvas&&ctx&&!matchMedia("(prefers-reduced-motion: reduce)").matches){resize();addEventListener("resize",resize);raf=requestAnimationFrame(draw)}
