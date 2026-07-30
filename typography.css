@@ -42,6 +42,37 @@ body :where(h1, h2, h3, h4, h5, h6) :where(span, strong, em, small) {
   font-stretch: normal;
 }
 
+/* Saira SemiBold is the shared voice for manifesto and supporting copy. */
+body :where(
+  .artists-manifesto,
+  .hero-meta,
+  .statement-note,
+  .work-copy > p,
+  .work-copy dl,
+  .service-list span,
+  .process p,
+  .about p,
+  .contact p,
+  footer
+),
+body :where(
+  .artists-manifesto,
+  .hero-meta,
+  .statement-note,
+  .work-copy > p,
+  .work-copy dl,
+  .service-list span,
+  .process p,
+  .about p,
+  .contact p,
+  footer
+) :where(p, span, strong, em, small, dt, dd, a) {
+  font-family: var(--sans) !important;
+  font-weight: 600;
+  font-stretch: normal;
+  letter-spacing: -0.012em;
+}
+
 .hero-wordmark,
 .hero-wordmark span {
   font-family: var(--sans) !important;

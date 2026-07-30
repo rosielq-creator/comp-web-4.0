@@ -643,8 +643,8 @@ main .artists {
   color: rgba(231, 230, 221, .72);
   font-size: clamp(12px, .86vw, 15px);
   font-weight: 600;
-  line-height: 1.72;
-  letter-spacing: .055em;
+  line-height: 1.48;
+  letter-spacing: -0.012em;
 }
 .artists-manifesto p {
   margin: 0;
