@@ -621,7 +621,7 @@ main .artists {
   }
 }
 .artists-shell {
-  grid-template-columns: minmax(150px, 16%) minmax(0, 50.4%) minmax(240px, 33.6%);
+  grid-template-columns: minmax(180px, 18%) minmax(0, 52%) minmax(220px, 30%);
   grid-template-rows: 1fr;
   column-gap: clamp(22px, 2.6vw, 48px);
   align-items: center;
@@ -632,11 +632,12 @@ main .artists {
   grid-column: 1;
   grid-row: 1;
   align-self: center;
-  max-width: 23ch;
-  color: rgba(231, 230, 221, .62);
-  font-size: clamp(10px, .72vw, 12px);
+  max-width: 27ch;
+  color: rgba(231, 230, 221, .72);
+  font-size: clamp(12px, .86vw, 15px);
   font-weight: 600;
-  line-height: 1.55;
+  line-height: 1.72;
+  letter-spacing: .055em;
 }
 .artists-manifesto p {
   margin: 0;
@@ -649,12 +650,14 @@ main .artists {
   grid-row: 1;
   justify-self: center;
   width: 100%;
+  align-items: center;
 }
 .artist-name {
-  width: 100%;
+  width: max-content;
+  max-width: 100%;
   font-size: clamp(76px, 9.1vw, 170px);
   line-height: .78;
-  text-align: left;
+  text-align: center;
 }
 .artist-preview {
   grid-column: 3;
@@ -680,6 +683,7 @@ main .artists {
   .artist-name-list {
     grid-column: 2;
     grid-row: 1;
+    align-items: flex-start;
   }
   .artist-preview {
     grid-column: 2;
@@ -715,6 +719,7 @@ main .artists {
   .artist-name-list {
     grid-column: 1;
     grid-row: 2;
+    align-items: center;
   }
   .artist-name {
     font-size: clamp(58px, 18vw, 84px);
