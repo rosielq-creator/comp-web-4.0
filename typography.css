@@ -1,0 +1,34 @@
+@font-face {
+  font-family: "Mona Sans";
+  src: url("assets/fonts/mona-sans/MonaSans-Variable.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 200 900;
+  font-stretch: 75% 125%;
+  font-display: swap;
+}
+
+:root {
+  --sans: "Mona Sans", "Noto Sans TC", "Noto Sans SC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+  --serif: "Mona Sans", "Noto Sans TC", "Noto Sans SC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+  --mono: "Mona Sans", "Noto Sans TC", "Noto Sans SC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+}
+
+html,
+body,
+button,
+input,
+select,
+textarea {
+  font-family: var(--sans);
+}
+
+body :where(h1, h2, h3, h4, h5, h6, p, a, span, strong, em, small, label, button, input, select, textarea) {
+  font-family: var(--sans) !important;
+}
+
+.hero-wordmark,
+.hero-wordmark span {
+  font-family: "Mona Sans", sans-serif !important;
+  font-weight: 800;
+  font-stretch: 100%;
+}
