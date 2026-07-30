@@ -82,33 +82,34 @@ function resizeCanvas() {
   height = canvas.height = innerHeight * ratio;
 }
 
-function ribbon(time, index) {
-  const t = time * .000095;
-  const center = height * (.12 + index * .255);
-  const amplitude = height * (.075 + index * .008);
-  const thickness = height * (.18 + index * .018);
-  const gradient = context.createLinearGradient(0, center - thickness, 0, center + thickness);
-  const alpha = .26 - index * .022;
-  gradient.addColorStop(0, "rgba(37,43,38,0)");
-  gradient.addColorStop(.30, `rgba(78,104,70,${alpha * .68})`);
-  gradient.addColorStop(.52, `rgba(112,145,94,${alpha})`);
-  gradient.addColorStop(.73, `rgba(65,91,59,${alpha * .78})`);
-  gradient.addColorStop(1, "rgba(26,32,27,0)");
-  context.beginPath();
-  for (let x = -width * .08; x <= width * 1.08; x += width / 32) {
-    const y = center + Math.sin(x / width * 2.25 + t + index * 1.75) * amplitude
-      + Math.cos(x / width * 1.35 - t * .58 + index) * amplitude * .42;
-    if (x === -width * .08) context.moveTo(x, y - thickness);
-    else context.lineTo(x, y - thickness);
-  }
-  for (let x = width * 1.08; x >= -width * .08; x -= width / 32) {
-    const y = center + Math.sin(x / width * 2.25 + t + index * 1.75) * amplitude
-      + Math.cos(x / width * 1.35 - t * .58 + index) * amplitude * .42;
-    context.lineTo(x, y + thickness);
-  }
-  context.closePath();
+const fluidBlobs = [
+  { x: -.10, y: .18, rx: .58, ry: .34, speed: .17, phase: .2, color: [108, 139, 91], alpha: .58 },
+  { x: .28, y: .72, rx: .62, ry: .31, speed: -.12, phase: 1.7, color: [73, 104, 65], alpha: .54 },
+  { x: .72, y: .28, rx: .56, ry: .38, speed: .14, phase: 3.4, color: [128, 151, 105], alpha: .48 },
+  { x: .94, y: .82, rx: .56, ry: .36, speed: -.10, phase: 4.8, color: [54, 85, 53], alpha: .55 },
+  { x: .48, y: .48, rx: .36, ry: .58, speed: .08, phase: 2.5, color: [89, 119, 75], alpha: .34 }
+];
+
+function drawBlob(blob, t, index) {
+  const driftX = Math.sin(t * blob.speed + blob.phase) * width * .16;
+  const driftY = Math.cos(t * blob.speed * .73 + blob.phase) * height * .12;
+  const x = blob.x * width + driftX;
+  const y = blob.y * height + driftY;
+  const radius = Math.max(width * blob.rx, height * blob.ry);
+  const gradient = context.createRadialGradient(x, y, 0, x, y, radius);
+  const [r, g, b] = blob.color;
+  gradient.addColorStop(0, `rgba(${r + 24},${g + 22},${b + 18},${blob.alpha})`);
+  gradient.addColorStop(.28, `rgba(${r},${g},${b},${blob.alpha * .82})`);
+  gradient.addColorStop(.62, `rgba(${Math.max(0, r - 24)},${Math.max(0, g - 24)},${Math.max(0, b - 20)},${blob.alpha * .38})`);
+  gradient.addColorStop(1, `rgba(${r},${g},${b},0)`);
+  context.save();
+  context.translate(x, y);
+  context.rotate(Math.sin(t * .07 + index) * .22);
+  context.scale(1.35 + Math.sin(t * .11 + index) * .1, .62 + Math.cos(t * .09 + index) * .08);
+  context.translate(-x, -y);
   context.fillStyle = gradient;
-  context.fill();
+  context.fillRect(x - radius, y - radius, radius * 2, radius * 2);
+  context.restore();
 }
 
 function draw(time) {
@@ -117,15 +118,24 @@ function draw(time) {
     return;
   }
   context.clearRect(0, 0, width, height);
+  const t = time * .001;
   const base = context.createLinearGradient(0, 0, width, height);
-  base.addColorStop(0, "#253225");
-  base.addColorStop(.34, "#0c140d");
-  base.addColorStop(.68, "#283a27");
-  base.addColorStop(1, "#0c150e");
+  base.addColorStop(0, "#172319");
+  base.addColorStop(.34, "#081009");
+  base.addColorStop(.68, "#1c2d1c");
+  base.addColorStop(1, "#071008");
   context.fillStyle = base;
   context.fillRect(0, 0, width, height);
   context.globalCompositeOperation = "screen";
-  for (let i = 0; i < 4; i += 1) ribbon(time, i);
+  fluidBlobs.forEach((blob, index) => drawBlob(blob, t, index));
+  const sheen = context.createLinearGradient(0, height * .18, width, height * .82);
+  const sweep = .5 + Math.sin(t * .16) * .22;
+  sheen.addColorStop(0, "rgba(180,198,157,0)");
+  sheen.addColorStop(Math.max(0, sweep - .14), "rgba(180,198,157,0)");
+  sheen.addColorStop(sweep, "rgba(180,198,157,.13)");
+  sheen.addColorStop(Math.min(1, sweep + .16), "rgba(180,198,157,0)");
+  context.fillStyle = sheen;
+  context.fillRect(0, 0, width, height);
   context.globalCompositeOperation = "source-over";
   frame = requestAnimationFrame(draw);
 }
