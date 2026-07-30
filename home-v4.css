@@ -610,6 +610,126 @@ main .artists {
   min-height: 100svh;
   padding: 0;
 }
+
+/* Screenshot-led artist composition and continuous hero handoff. */
+.hero-sequence {
+  height: 145svh;
+}
+@supports (animation-timeline: scroll()) {
+  .hero-title span {
+    animation-range: 0 45svh;
+  }
+}
+.artists-shell {
+  grid-template-columns: minmax(150px, 16%) minmax(0, 50.4%) minmax(240px, 33.6%);
+  grid-template-rows: 1fr;
+  column-gap: clamp(22px, 2.6vw, 48px);
+  align-items: center;
+  padding-top: clamp(98px, 12vh, 132px);
+  padding-bottom: clamp(44px, 6vh, 72px);
+}
+.artists-manifesto {
+  grid-column: 1;
+  grid-row: 1;
+  align-self: center;
+  max-width: 23ch;
+  color: rgba(231, 230, 221, .62);
+  font-size: clamp(10px, .72vw, 12px);
+  font-weight: 600;
+  line-height: 1.55;
+}
+.artists-manifesto p {
+  margin: 0;
+}
+.artists-manifesto p + p {
+  margin-top: 1.5em;
+}
+.artist-name-list {
+  grid-column: 2;
+  grid-row: 1;
+  justify-self: center;
+  width: 100%;
+}
+.artist-name {
+  width: 100%;
+  font-size: clamp(76px, 9.1vw, 170px);
+  line-height: .78;
+  text-align: left;
+}
+.artist-preview {
+  grid-column: 3;
+  grid-row: 1;
+  justify-self: end;
+  width: min(100%, 420px);
+  height: auto;
+  min-height: 0;
+  aspect-ratio: 3 / 4;
+}
+
+@media (max-width: 900px) {
+  .artists-shell {
+    grid-template-columns: minmax(110px, 22%) minmax(0, 1fr);
+    grid-template-rows: auto auto;
+  }
+  .artists-manifesto {
+    grid-column: 1;
+    grid-row: 1 / 3;
+    align-self: start;
+    margin-top: 8px;
+  }
+  .artist-name-list {
+    grid-column: 2;
+    grid-row: 1;
+  }
+  .artist-preview {
+    grid-column: 2;
+    grid-row: 2;
+    width: min(58vw, 330px);
+    margin-top: 28px;
+  }
+}
+
+@media (max-width: 767px) {
+  .hero-sequence {
+    height: 130svh;
+  }
+  @supports (animation-timeline: scroll()) {
+    .hero-title span {
+      animation-range: 0 30svh;
+    }
+  }
+  .artists-shell {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+    gap: 0;
+    padding: 96px 18px 46px;
+  }
+  .artists-manifesto {
+    grid-column: 1;
+    grid-row: 1;
+    max-width: 34ch;
+    margin: 0 0 28px;
+    font-size: 10px;
+  }
+  .artist-name-list {
+    grid-column: 1;
+    grid-row: 2;
+  }
+  .artist-name {
+    font-size: clamp(58px, 18vw, 84px);
+    line-height: .82;
+  }
+  .artist-preview {
+    grid-column: 1;
+    grid-row: 3;
+    justify-self: end;
+    width: min(70vw, 300px);
+    height: auto;
+    margin-top: 30px;
+    aspect-ratio: 3 / 4;
+  }
+}
 @media (max-width: 800px) {
   main .artists {
     height: auto;
