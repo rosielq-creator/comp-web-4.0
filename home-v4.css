@@ -747,6 +747,40 @@ main .artists {
     transition: none;
   }
 }
+
+/* Hero handoff: the page travels while the words disperse.
+   One viewport of scroll equals one complete transition into Artists. */
+.hero-sequence {
+  height: 100svh;
+  min-height: 620px;
+}
+
+.hero-stage {
+  position: relative;
+  top: auto;
+  height: 100svh;
+  min-height: 620px;
+}
+
+@supports (animation-timeline: scroll()) {
+  .hero-title span {
+    animation-range: 0 92svh;
+  }
+}
+
+@media (max-width: 767px) {
+  .hero-sequence,
+  .hero-stage {
+    height: 100svh;
+    min-height: 580px;
+  }
+
+  @supports (animation-timeline: scroll()) {
+    .hero-title span {
+      animation-range: 0 88svh;
+    }
+  }
+}
 * {
   box-sizing: border-box;
 }
