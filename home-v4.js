@@ -5,6 +5,12 @@ const artistData = [
   {name:"Noah",role:"Film · Fashion · Culture",image:"assets/profiles/noah/black-portrait.png",href:"noah.html"},
   {name:"Mario",role:"Lifestyle · Sport · Fashion",image:"assets/mario-portrait.png",href:"mario.html"}
 ];
+
+const header = document.querySelector("[data-header]");
+const syncHeader = () => header?.classList.toggle("is-scrolled", window.scrollY > 24);
+addEventListener("scroll", syncHeader, {passive: true});
+syncHeader();
+
 const tabs=[...document.querySelectorAll("[data-artist]")];
 function selectArtist(index){
   const current=artistData[index],previous=artistData[(index+artistData.length-1)%artistData.length],next=artistData[(index+1)%artistData.length];
