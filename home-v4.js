@@ -36,12 +36,14 @@ const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{
 }),{threshold:.45});
 videos.forEach(video=>observer.observe(video));
 
-const frontlineLines=[...document.querySelectorAll(".frontline-line")];
-if(frontlineLines.length){
-  const lineObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{
-    if(entry.isIntersecting) entry.target.classList.add("is-visible");
-  }),{threshold:.58});
-  frontlineLines.forEach(line=>lineObserver.observe(line));
+const hero=document.querySelector(".hero");
+const frontline=document.querySelector(".frontline");
+if(frontline){
+  const frontlineObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{
+    frontline.classList.toggle("is-visible",entry.isIntersecting);
+    hero?.classList.toggle("is-leaving",entry.isIntersecting);
+  }),{threshold:.16});
+  frontlineObserver.observe(frontline);
 }
 
 const canvas=document.querySelector("#mineralCanvas");
