@@ -6,7 +6,7 @@
   <meta name="description" content="Greentomato represents next-generation AI artists and produces AI-native campaigns for brands.">
   <meta name="theme-color" content="#0b0d0a">
   <title>Greentomato | Next-generation artists</title>
-  <link rel="stylesheet" href="home-v4.css?v=20260730-17">
+  <link rel="stylesheet" href="home-v4.css?v=20260730-18">
   <link rel="stylesheet" href="typography.css?v=20260730-5">
 </head>
 <body>
@@ -25,54 +25,60 @@
   </header>
 
   <main id="main">
-    <section class="hero" aria-labelledby="hero-title">
-      <canvas id="mineralCanvas" aria-hidden="true"></canvas>
-      <div class="hero-atmosphere" aria-hidden="true"></div>
-      <div class="hero-copy">
-        <h1 id="hero-title">We build next-generation<br>artists with identities,<br>voices and worlds.</h1>
-        <p>For brands ready to create culture,<br>not just content.</p>
+    <section class="hero-sequence" aria-labelledby="hero-title">
+      <div class="hero-stage">
+        <canvas id="mineralCanvas" aria-hidden="true"></canvas>
+        <div class="hero-atmosphere" aria-hidden="true"></div>
+        <div class="hero-title" id="hero-title" aria-label="Next generation talents">
+          <span>NEXT</span><span>GENERATION</span><span>TALENTS</span>
+        </div>
+        <div class="hero-portrait-wrap">
+          <div class="hero-film" aria-hidden="true"></div>
+          <img class="hero-portrait" src="assets/profiles/maya/black-tailoring.png" alt="Maya, Greentomato artist">
+        </div>
+        <div class="hero-roster" aria-hidden="true">
+          <img src="assets/profiles/maya/black-tailoring.png" alt="">
+          <img src="assets/profiles/amber/night-portrait.png" alt="">
+          <img src="assets/profiles/ooona/hero.png" alt="">
+          <img src="assets/profiles/noah/black-portrait.png" alt="">
+          <img src="assets/mario-portrait.png" alt="">
+        </div>
+        <div class="hero-meta">
+          <p>AI TALENT AGENCY</p>
+          <div>
+            <p>Distinct digital personalities<br>built for culture, brands and stories.</p>
+            <a href="#artists">Explore artists</a>
+            <a href="#contact">Start a project</a>
+          </div>
+        </div>
       </div>
-      <div class="hero-wordmark" aria-hidden="true"><span>AI</span><span>PRODUCTION</span></div>
-      <div class="hero-meta" aria-hidden="true">
-        <span>AI TALENT AGENCY</span>
-        <span>HONG KONG / GLOBAL</span>
-      </div>
-    </section>
-
-    <section class="frontline" id="about" aria-labelledby="frontline-title">
-      <div class="frontline-flow" aria-hidden="true"></div>
-      <p class="frontline-kicker">Our position</p>
-      <h2 class="frontline-manifesto" id="frontline-title">
-        <span>We move with AI at the speed of possibility,</span>
-        <span>without surrendering the standards that make creative work worth remembering.</span>
-        <span>Original thinking, exacting quality and considered taste</span>
-        <span>remain human at the core.</span>
-      </h2>
     </section>
 
     <section class="artists" id="artists" aria-labelledby="artists-title">
       <div class="artists-intro">
-        <p class="section-tag">02 / ARTISTS</p>
-        <h2 id="artists-title">Five identities.<br><em>Infinite worlds.</em></h2>
+        <h2 id="artists-title">Five identities.<br>Five original worlds.</h2>
       </div>
       <div class="artist-sticky">
-        <div class="artist-ghost" aria-hidden="true"><span data-ghost-prev>AMBER</span><strong data-ghost-name>MAYA</strong><span data-ghost-next>OOONA</span></div>
-        <a class="artist-image" data-artist-link href="maya.html">
+        <div class="artist-ghost" aria-hidden="true"><strong data-ghost-name>MAYA</strong></div>
+        <a class="artist-image" data-artist-link href="maya.html" aria-label="View Maya profile">
           <img data-artist-image src="assets/profiles/maya/pink-editorial.png" alt="Maya">
         </a>
         <div class="artist-info">
           <p><span data-artist-index>01</span> / 05</p>
           <h3 data-artist-name>Maya</h3>
-          <p data-artist-role>Luxury fashion · Art</p>
-          <a data-artist-link-text href="maya.html">Explore profile ↗</a>
+          <p data-artist-role>Luxury fashion<br>Art direction<br>Digital storytelling</p>
+          <a data-artist-link-text href="maya.html">View profile ↗</a>
         </div>
-        <div class="artist-tabs" role="tablist" aria-label="Artists">
+        <div class="artist-tabs" role="tablist" aria-label="Select an artist">
           <button class="is-active" data-artist="0" type="button">01 Maya</button>
           <button data-artist="1" type="button">02 Amber</button>
           <button data-artist="2" type="button">03 Ooona</button>
           <button data-artist="3" type="button">04 Noah</button>
           <button data-artist="4" type="button">05 Mario</button>
         </div>
+      </div>
+      <div class="artist-steps" aria-hidden="true">
+        <i data-step="0"></i><i data-step="1"></i><i data-step="2"></i><i data-step="3"></i><i data-step="4"></i>
       </div>
     </section>
 
@@ -153,6 +159,6 @@
     </section>
   </main>
   <footer><span class="official-logo" role="img" aria-label="Greentomato"></span><p>Hong Kong / Global · © 2026</p></footer>
-  <script src="home-v4.js?v=20260730-13"></script>
+  <script src="home-v4.js?v=20260730-14"></script>
 </body>
 </html>
