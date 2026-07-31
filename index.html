@@ -6,7 +6,7 @@
   <meta name="description" content="Greentomato represents next-generation AI artists and produces AI-native campaigns for brands.">
   <meta name="theme-color" content="#0b0d0a">
   <title>Greentomato | Next-generation artists</title>
-  <link rel="stylesheet" href="home-v4.css?v=20260731-36">
+  <link rel="stylesheet" href="home-v4.css?v=20260731-37">
   <link rel="stylesheet" href="typography.css?v=20260730-8">
 </head>
 <body>
@@ -43,15 +43,10 @@
 
     <section class="artists" id="artists" aria-labelledby="artists-title">
       <div class="artists-shell">
-        <h2 class="sr-only" id="artists-title">Greentomato artists and original worlds.</h2>
-        <aside class="artists-manifesto">
-          <div class="artists-manifesto-head">
-            <span>GT Journal / Artist Index</span>
-            <small>01—05 / 2026</small>
-          </div>
-          <p>Distinct identities with a point of view, created for culture, brands and stories.</p>
-          <p>We move with AI while keeping human taste, craft and intention at the centre.</p>
-        </aside>
+        <header class="artists-intro">
+          <h2 id="artists-title">Our artists</h2>
+          <p>Distinct digital identities created for culture, brands and stories.</p>
+        </header>
         <div class="artist-name-list" role="list" aria-label="Greentomato artists">
           <a class="artist-name is-active" data-artist="0" href="maya.html" role="listitem"><span>Maya</span></a>
           <a class="artist-name" data-artist="1" href="amber.html" role="listitem"><span>Amber</span></a>
@@ -66,9 +61,14 @@
           <span class="artist-preview-layer" aria-hidden="true">
             <img data-artist-image-next src="assets/artist-previews/maya.webp" alt="">
           </span>
-          <span class="artist-preview-index" aria-hidden="true">GT / ARTIST <b data-artist-short-number>01</b></span>
-          <span class="artist-preview-meta"><b data-artist-role>Luxury fashion / Art direction</b><i>View profile ↗</i></span>
         </a>
+        <aside class="artist-detail" aria-live="polite">
+          <span class="artist-detail-count"><b data-artist-short-number>01</b> / 05</span>
+          <h3 data-artist-name>Maya</h3>
+          <p class="artist-detail-role" data-artist-role>Luxury fashion<br>Art direction<br>Digital storytelling</p>
+          <p class="artist-detail-copy" data-artist-copy>A precise visual voice shaped for fashion, image-making and contemporary culture.</p>
+          <a data-artist-detail-link href="maya.html">View profile <b aria-hidden="true">↗</b></a>
+        </aside>
         <a class="artists-view-more" href="artists.html"><span>View more artists</span><b aria-hidden="true">↗</b></a>
       </div>
     </section>
@@ -166,6 +166,6 @@
     </section>
   </main>
   <footer><span class="official-logo" role="img" aria-label="Greentomato"></span><p>Hong Kong / Global · © 2026</p></footer>
-  <script src="home-v4.js?v=20260731-26"></script>
+  <script src="home-v4.js?v=20260731-27"></script>
 </body>
 </html>

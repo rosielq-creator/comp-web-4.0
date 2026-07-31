@@ -1,9 +1,9 @@
 const artistData = [
-  { name: "Maya", role: "Luxury fashion<br>Art direction<br>Digital storytelling", image: "assets/artist-previews/maya.webp", href: "maya.html" },
-  { name: "Amber", role: "Music<br>Fashion<br>Culture", image: "assets/artist-previews/amber.webp", href: "amber.html" },
-  { name: "Ooona", role: "Beauty<br>Wellness<br>Spirit", image: "assets/artist-previews/ooona.webp", href: "ooona.html" },
-  { name: "Noah", role: "Film<br>Fashion<br>Culture", image: "assets/artist-previews/noah.webp", href: "noah.html" },
-  { name: "Mario", role: "Lifestyle<br>Sport<br>Fashion", image: "assets/artist-previews/mario.webp", href: "mario.html" }
+  { name: "Maya", role: "Luxury fashion<br>Art direction<br>Digital storytelling", copy: "A precise visual voice shaped for fashion, image-making and contemporary culture.", image: "assets/artist-previews/maya.webp", href: "maya.html" },
+  { name: "Amber", role: "Music<br>Fashion<br>Culture", copy: "A vivid creative presence moving between sound, style and youth culture.", image: "assets/artist-previews/amber.webp", href: "amber.html" },
+  { name: "Ooona", role: "Beauty<br>Wellness<br>Spirit", copy: "A softer perspective exploring beauty, wellbeing and inner life.", image: "assets/artist-previews/ooona.webp", href: "ooona.html" },
+  { name: "Noah", role: "Film<br>Fashion<br>Culture", copy: "A cinematic character built for modern stories, fashion and visual culture.", image: "assets/artist-previews/noah.webp", href: "noah.html" },
+  { name: "Mario", role: "Lifestyle<br>Sport<br>Fashion", copy: "An energetic personality connecting movement, everyday life and style.", image: "assets/artist-previews/mario.webp", href: "mario.html" }
 ];
 
 const header = document.querySelector("[data-header]");
@@ -37,12 +37,15 @@ function selectArtist(index) {
     nextLayer.classList.add("is-visible");
     currentLayer.classList.remove("is-visible");
   }
-  document.querySelector("[data-artist-role]").innerHTML = current.role.replaceAll("<br>", " / ");
+  document.querySelector("[data-artist-role]").innerHTML = current.role;
+  document.querySelector("[data-artist-name]").textContent = current.name;
+  document.querySelector("[data-artist-copy]").textContent = current.copy;
   const number = String(index + 1).padStart(2, "0");
   const shortNumber = document.querySelector("[data-artist-short-number]");
   if (shortNumber) shortNumber.textContent = number;
   document.querySelector("[data-artist-link]").href = current.href;
   document.querySelector("[data-artist-link]").setAttribute("aria-label", `View ${current.name} profile`);
+  document.querySelector("[data-artist-detail-link]").href = current.href;
   tabs.forEach((tab, i) => {
     tab.classList.toggle("is-active", i === index);
     tab.setAttribute("aria-current", i === index ? "true" : "false");
