@@ -2632,3 +2632,132 @@ main .service-item i {
     font-size: 4.2vw;
   }
 }
+
+/* 2026-07-31 / Artist roster rebuilt from the approved Monolog proportion reference.
+   The roster is the dominant type field; supporting copy and portrait stay peripheral. */
+@media (min-width: 901px) {
+  main .artists {
+    min-height: 112svh;
+  }
+
+  main .artists-shell {
+    position: relative;
+    display: grid;
+    grid-template-columns: 28% minmax(0, 1fr);
+    grid-template-rows: 1fr;
+    align-items: center;
+    min-height: 112svh;
+    padding: clamp(110px, 12vh, 150px) clamp(32px, 3.1vw, 60px) clamp(70px, 8vh, 100px);
+    overflow: hidden;
+  }
+
+  main .artists-manifesto {
+    grid-column: 1;
+    grid-row: 1;
+    align-self: center;
+    width: min(78%, 300px);
+    max-width: none;
+    margin: 0;
+    font-size: clamp(11px, .72vw, 14px);
+    line-height: 1.55;
+  }
+
+  main .artists-manifesto-head {
+    gap: 14px;
+    margin-bottom: clamp(38px, 5vh, 62px);
+    font-size: clamp(8px, .52vw, 10px);
+  }
+
+  main .artists-view-more {
+    min-width: min(100%, 178px);
+    min-height: 42px;
+    margin-top: clamp(36px, 5vh, 58px);
+    font-size: clamp(9px, .62vw, 12px);
+  }
+
+  main .artist-name-list {
+    position: relative;
+    z-index: 3;
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: stretch;
+    align-items: flex-start;
+    width: 100%;
+    gap: 0;
+    padding-left: clamp(20px, 1.8vw, 36px);
+  }
+
+  main .artist-name {
+    width: max-content;
+    padding: 0;
+    color: rgba(231, 230, 221, .16);
+    font-size: clamp(78px, 7.05vw, 136px);
+    font-weight: 600;
+    line-height: .98;
+    letter-spacing: -.065em;
+    text-align: left;
+    transition: color 150ms ease;
+  }
+
+  main .artist-name span {
+    transform: none;
+    transition: transform 150ms ease, letter-spacing 150ms ease;
+  }
+
+  main .artist-name:hover,
+  main .artist-name:focus-visible,
+  main .artist-name.is-active {
+    color: var(--ivory);
+  }
+
+  main .artist-name:hover span,
+  main .artist-name:focus-visible span,
+  main .artist-name.is-active span {
+    transform: translateX(clamp(8px, .7vw, 14px));
+    letter-spacing: -.05em;
+  }
+
+  main .artist-preview {
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    right: clamp(-76px, -3.8vw, -42px);
+    grid-column: auto;
+    grid-row: auto;
+    width: clamp(220px, 17vw, 328px);
+    height: auto;
+    aspect-ratio: 3 / 4;
+    transform: translateY(-50%);
+  }
+
+  main .artist-preview-meta {
+    right: 14px;
+    bottom: 13px;
+    left: 14px;
+    font-size: clamp(8px, .52vw, 10px);
+  }
+
+  main .artist-preview-index {
+    top: 13px;
+    right: 14px;
+    left: 14px;
+    font-size: clamp(7px, .46vw, 9px);
+  }
+}
+
+@media (max-width: 900px) {
+  main .artists-shell {
+    min-height: 100svh;
+    padding-top: 104px;
+  }
+
+  main .artist-name-list {
+    align-items: flex-start;
+  }
+
+  main .artist-name {
+    font-size: clamp(56px, 15.5vw, 94px);
+    line-height: .95;
+    text-align: left;
+  }
+}
