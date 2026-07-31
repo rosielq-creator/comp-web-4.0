@@ -1365,6 +1365,27 @@ main .artists {
   }
 }
 
+/* 60% post-hero scale: preserve full-bleed chapter backgrounds while reducing
+   every later text and media element without changing the opening sequence. */
+.scaled-section-shell {
+  width: 100%;
+  overflow: hidden;
+}
+.scaled-section-shell--ink {
+  background: var(--ink);
+}
+.scaled-section-shell--ivory {
+  background: var(--ivory);
+}
+.scaled-section-shell--moss {
+  background: var(--moss);
+}
+.scaled-section {
+  width: 166.666667%;
+  margin-left: 0;
+  zoom: 0.6;
+}
+
 /* Final services lock: keep this after all legacy homepage declarations. */
 main .services {
   padding: clamp(120px, 18vh, 210px) 4vw clamp(130px, 20vh, 240px);
