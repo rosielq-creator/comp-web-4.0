@@ -1,0 +1,269 @@
+/* Final Artist chapter lock. Loaded after the legacy homepage cascade. */
+#artists {
+  height: auto;
+  min-height: 0;
+  padding: 0;
+  color: var(--ivory);
+  background:
+    radial-gradient(circle at 24% 48%, rgba(166, 174, 152, .15), transparent 31%),
+    radial-gradient(circle at 66% 42%, rgba(105, 168, 79, .07), transparent 28%),
+    #080a08;
+}
+
+#artists .artists-shell {
+  position: relative;
+  display: block;
+  min-height: clamp(680px, 92svh, 900px);
+  padding: clamp(92px, 11vh, 126px) clamp(20px, 3.8vw, 72px) clamp(34px, 5vh, 58px);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+#artists .artists-intro {
+  position: absolute;
+  z-index: 5;
+  top: clamp(92px, 11vh, 126px);
+  right: clamp(20px, 3.8vw, 72px);
+  left: clamp(20px, 3.8vw, 72px);
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+#artists .artists-intro h2 {
+  margin: 0;
+  color: var(--ivory);
+  font-size: clamp(13px, 1vw, 17px);
+  font-weight: 600;
+  letter-spacing: -.02em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+#artists .artists-intro p {
+  max-width: 25ch;
+  margin: 0;
+  color: rgba(231, 230, 221, .48);
+  font-size: clamp(9px, .68vw, 12px);
+  line-height: 1.45;
+  text-align: right;
+}
+
+#artists .artist-field {
+  position: absolute;
+  z-index: 0;
+  top: 21%;
+  display: flex;
+  width: min(28vw, 390px);
+  flex-direction: column;
+  color: rgba(231, 230, 221, .13);
+  font-size: clamp(19px, 2.15vw, 38px);
+  font-weight: 500;
+  letter-spacing: -.055em;
+  line-height: 1.08;
+  text-transform: uppercase;
+  user-select: none;
+}
+
+#artists .artist-field-left {
+  left: -1.2vw;
+  align-items: flex-end;
+  text-align: right;
+}
+
+#artists .artist-field-right {
+  top: 18%;
+  right: -1.2vw;
+}
+
+#artists .artist-preview {
+  position: absolute;
+  z-index: 2;
+  top: 22%;
+  left: 50%;
+  display: block;
+  width: clamp(210px, 22vw, 340px);
+  height: auto;
+  min-height: 0;
+  aspect-ratio: 4 / 5;
+  margin: 0;
+  overflow: hidden;
+  transform: translateX(-50%) rotate(-1.5deg);
+}
+
+#artists .artist-display-name {
+  position: absolute;
+  z-index: 3;
+  top: 48%;
+  left: 50%;
+  width: max-content;
+  margin: 0;
+  color: transparent;
+  background: radial-gradient(circle, rgba(231, 230, 221, .92) 0 35%, transparent 39%) 0 0 / 10px 10px;
+  -webkit-background-clip: text;
+  background-clip: text;
+  font-family: "Saira", sans-serif;
+  font-size: clamp(72px, 11vw, 176px);
+  font-weight: 750;
+  letter-spacing: -.06em;
+  line-height: .82;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+#artists .artist-name-list {
+  position: absolute;
+  z-index: 6;
+  bottom: clamp(100px, 12vh, 126px);
+  left: 50%;
+  display: flex;
+  grid-template-columns: none;
+  width: auto;
+  gap: clamp(18px, 2.4vw, 40px);
+  padding: 0;
+  border: 0;
+  overflow: visible;
+  transform: translateX(-50%);
+}
+
+#artists .artist-name {
+  display: block;
+  width: auto;
+  padding: 0 0 5px;
+  border: 0;
+  border-bottom: 1px solid transparent;
+  color: rgba(231, 230, 221, .34);
+  font-size: clamp(10px, .8vw, 13px);
+  font-weight: 600;
+  letter-spacing: .01em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+#artists .artist-name::before {
+  display: none;
+  content: none;
+}
+
+#artists .artist-name:hover,
+#artists .artist-name:focus-visible,
+#artists .artist-name.is-active {
+  border-color: var(--ivory);
+  color: var(--ivory);
+}
+
+#artists .artist-name span,
+#artists .artist-name:hover span,
+#artists .artist-name:focus-visible span,
+#artists .artist-name.is-active span {
+  display: inline;
+  transform: none;
+  letter-spacing: .01em;
+}
+
+#artists .artist-detail {
+  position: absolute;
+  z-index: 5;
+  right: clamp(20px, 3.8vw, 72px);
+  bottom: clamp(104px, 15vh, 150px);
+  display: block;
+  width: min(18vw, 235px);
+  max-width: 235px;
+  padding: 0;
+}
+
+#artists .artist-detail h3 {
+  margin: 0 0 12px;
+  font-size: clamp(20px, 1.7vw, 28px);
+}
+
+#artists .artist-detail-role,
+#artists .artist-detail-copy {
+  font-size: clamp(9px, .65vw, 11px);
+  line-height: 1.48;
+}
+
+#artists .artist-detail-copy {
+  margin-top: 14px;
+}
+
+#artists .artist-detail > a {
+  margin-top: 18px;
+  font-size: 10px;
+}
+
+#artists .artists-view-more {
+  position: absolute;
+  z-index: 6;
+  right: clamp(20px, 3.8vw, 72px);
+  bottom: clamp(34px, 5vh, 58px);
+  left: clamp(20px, 3.8vw, 72px);
+  display: flex;
+  width: auto;
+  min-width: 0;
+  min-height: 0;
+  margin: 0;
+  padding: 16px 0 0;
+  border: 0;
+  border-top: 1px solid rgba(231, 230, 221, .26);
+  font-size: clamp(18px, 1.65vw, 27px);
+}
+
+@media (max-width: 560px) {
+  #artists .artists-shell {
+    min-height: 760px;
+    padding: 78px 16px 30px;
+  }
+  #artists .artists-intro {
+    top: 78px;
+    right: 16px;
+    left: 16px;
+  }
+  #artists .artist-field {
+    top: 21%;
+    width: 46vw;
+    font-size: 18px;
+  }
+  #artists .artist-field-left { left: -12vw; }
+  #artists .artist-field-right { top: 19%; right: -12vw; }
+  #artists .artist-preview {
+    top: 25%;
+    width: min(51vw, 224px);
+  }
+  #artists .artist-display-name {
+    top: 43%;
+    background-size: 7px 7px;
+    font-size: clamp(58px, 18vw, 82px);
+  }
+  #artists .artist-name-list {
+    right: 16px;
+    bottom: 192px;
+    left: 16px;
+    justify-content: space-between;
+    gap: 10px;
+    transform: none;
+  }
+  #artists .artist-name { font-size: 9px; }
+  #artists .artist-detail {
+    right: auto;
+    bottom: 92px;
+    left: 16px;
+    width: 60%;
+    max-width: 220px;
+  }
+  #artists .artist-detail-copy { display: none; }
+  #artists .artists-view-more {
+    right: 16px;
+    bottom: 30px;
+    left: 16px;
+    font-size: 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #artists .artist-display-name.is-changing {
+    animation: none;
+  }
+}

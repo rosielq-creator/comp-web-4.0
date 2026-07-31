@@ -39,6 +39,13 @@ function selectArtist(index) {
   }
   document.querySelector("[data-artist-role]").innerHTML = current.role;
   document.querySelector("[data-artist-name]").textContent = current.name;
+  const displayName = document.querySelector("[data-artist-display]");
+  if (displayName) {
+    displayName.classList.remove("is-changing");
+    void displayName.offsetWidth;
+    displayName.textContent = current.name;
+    displayName.classList.add("is-changing");
+  }
   document.querySelector("[data-artist-copy]").textContent = current.copy;
   const number = String(index + 1).padStart(2, "0");
   const shortNumber = document.querySelector("[data-artist-short-number]");
