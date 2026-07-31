@@ -3009,55 +3009,7 @@ main .service-item i {
   }
 }
 
-/* Continuous homepage contract */
-html,
-body {
-  scroll-snap-type: none;
-}
-
-main {
-  overflow: clip;
-}
-
-main .artists,
-main .success-stories,
-main .services,
-main .contact {
-  position: relative;
-  min-height: auto;
-  scroll-snap-align: none;
-  scroll-snap-stop: normal;
-}
-
-main .artists::after,
-main .success-stories::after,
-main .services::after {
-  position: absolute;
-  right: clamp(18px, 4vw, 76px);
-  bottom: 0;
-  left: clamp(18px, 4vw, 76px);
-  height: 1px;
-  background: currentColor;
-  content: "";
-  opacity: .16;
-}
-
-main .success-stories {
-  padding-top: clamp(92px, 12vw, 168px);
-  padding-bottom: clamp(104px, 14vw, 190px);
-}
-
-main .services {
-  padding-top: clamp(104px, 13vw, 184px);
-  padding-bottom: clamp(112px, 14vw, 196px);
-}
-
-main .contact {
-  padding-top: clamp(120px, 15vw, 220px);
-  padding-bottom: clamp(104px, 13vw, 188px);
-}
-
-/* Compact editorial Artist index. */
+/* Final cascade lock: compact editorial Artist index. */
 main .artists {
   min-height: auto;
 }
@@ -3118,27 +3070,6 @@ main .artist-preview {
 }
 
 @media (max-width: 900px) {
-  main .success-stories,
-  main .services,
-  main .contact {
-    min-height: auto;
-  }
-
-  main .success-stories {
-    padding-top: 88px;
-    padding-bottom: 104px;
-  }
-
-  main .services {
-    padding-top: 96px;
-    padding-bottom: 112px;
-  }
-
-  main .contact {
-    padding-top: 112px;
-    padding-bottom: 104px;
-  }
-
   main .artists-shell {
     display: grid;
     grid-template-columns: 1fr minmax(130px, 42%);
