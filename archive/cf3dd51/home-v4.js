@@ -50,7 +50,7 @@ if(frontline){
     frontline.style.setProperty("--frontline-progress",progress.toFixed(3));
     phrases.forEach((phrase,index)=>{
       const segmentStart=index/phrases.length;
-      const segmentLength=.44;
+      const segmentLength=.25;
       const phraseProgress=Math.max(0,Math.min(1,(progress-segmentStart)/segmentLength));
       phrase.style.setProperty("--phrase-progress",phraseProgress.toFixed(3));
     });
