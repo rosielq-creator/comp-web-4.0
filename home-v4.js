@@ -61,6 +61,86 @@ tabs.forEach((tab, index) => {
 selectArtist(0);
 
 const videos = [...document.querySelectorAll(".work-media video")];
+function formatVideoTime(value) {
+  if (!Number.isFinite(value)) return "0:00";
+  const minutes = Math.floor(value / 60);
+  const seconds = Math.floor(value % 60).toString().padStart(2, "0");
+  return `${minutes}:${seconds}`;
+}
+
+videos.forEach((video) => {
+  const media = video.closest(".work-media");
+  if (!media) return;
+
+  const caseLink = document.createElement("a");
+  caseLink.className = "work-media-link";
+  caseLink.href = media.dataset.caseHref;
+  caseLink.setAttribute("aria-label", media.dataset.caseLabel);
+
+  const controls = document.createElement("div");
+  controls.className = "work-video-controls";
+  controls.innerHTML = `
+    <button class="work-play" type="button" aria-label="Pause video">Pause</button>
+    <input class="work-progress" type="range" min="0" max="1000" value="0" step="1" aria-label="Video progress">
+    <output class="work-time">0:00 / 0:00</output>
+    <button class="work-sound" type="button" aria-label="Turn sound on" aria-pressed="false">Sound</button>
+    <button class="work-fullscreen" type="button" aria-label="Enter fullscreen">Full</button>
+  `;
+  media.append(caseLink, controls);
+
+  const playButton = controls.querySelector(".work-play");
+  const progress = controls.querySelector(".work-progress");
+  const time = controls.querySelector(".work-time");
+  const soundButton = controls.querySelector(".work-sound");
+  const fullscreenButton = controls.querySelector(".work-fullscreen");
+
+  const syncControls = () => {
+    playButton.textContent = video.paused ? "Play" : "Pause";
+    playButton.setAttribute("aria-label", `${video.paused ? "Play" : "Pause"} video`);
+    soundButton.textContent = video.muted ? "Sound" : "Mute";
+    soundButton.setAttribute("aria-label", video.muted ? "Turn sound on" : "Mute video");
+    soundButton.setAttribute("aria-pressed", String(!video.muted));
+    const duration = Number.isFinite(video.duration) ? video.duration : 0;
+    const progressValue = duration ? video.currentTime / duration : 0;
+    progress.value = String(Math.round(progressValue * 1000));
+    progress.style.setProperty("--video-progress", `${progressValue * 100}%`);
+    time.value = `${formatVideoTime(video.currentTime)} / ${formatVideoTime(duration)}`;
+  };
+
+  playButton.addEventListener("click", () => {
+    if (video.paused) video.play().catch(() => {});
+    else video.pause();
+  });
+  progress.addEventListener("input", () => {
+    if (!Number.isFinite(video.duration)) return;
+    video.currentTime = Number(progress.value) / 1000 * video.duration;
+  });
+  soundButton.addEventListener("click", () => {
+    videos.forEach((other) => {
+      if (other !== video) other.muted = true;
+    });
+    video.muted = !video.muted;
+    if (video.paused) video.play().catch(() => {});
+    videos.forEach((item) => item.dispatchEvent(new Event("volumechange")));
+  });
+  fullscreenButton.addEventListener("click", async () => {
+    try {
+      if (media.requestFullscreen) await media.requestFullscreen();
+      else if (video.webkitEnterFullscreen) video.webkitEnterFullscreen();
+    } catch {
+      // Fullscreen support is controlled by the browser and device.
+    }
+  });
+  video.addEventListener("click", () => {
+    if (video.paused) video.play().catch(() => {});
+    else video.pause();
+  });
+  ["play", "pause", "timeupdate", "loadedmetadata", "volumechange"].forEach((eventName) => {
+    video.addEventListener(eventName, syncControls);
+  });
+  syncControls();
+});
+
 const videoObserver = new IntersectionObserver(entries => entries.forEach(entry => {
   if (entry.isIntersecting) entry.target.play().catch(() => {});
   else entry.target.pause();
@@ -78,6 +158,54 @@ if (workRows.length) {
   }, { threshold: .12, rootMargin: "0px 0px -8% 0px" });
   workRows.forEach(row => workRevealObserver.observe(row));
 }
+
+const serviceData = [
+  {
+    image: "assets/artist-previews/maya.webp",
+    caption: "Find the right digital face for the idea."
+  },
+  {
+    image: "assets/artist-previews/amber.webp",
+    caption: "Build the identity, voice and world around the talent."
+  },
+  {
+    image: "assets/work/takoyaki-poster.jpg",
+    caption: "Turn the creative system into moving image and content."
+  },
+  {
+    image: "assets/work/peninsula/peninsula-fathers-day-key-visual.jpg",
+    caption: "Connect talent, story and distribution in one campaign."
+  }
+];
+const serviceItems = [...document.querySelectorAll("[data-service]")];
+let activeService = -1;
+function selectService(index) {
+  if (index === activeService || !serviceData[index]) return;
+  activeService = index;
+  const visual = document.querySelector(".service-visual");
+  const currentLayer = visual?.querySelector(".service-visual-layer.is-visible");
+  const nextLayer = visual?.querySelector(".service-visual-layer:not(.is-visible)");
+  const nextImage = nextLayer?.querySelector("img");
+  if (currentLayer && nextLayer && nextImage) {
+    nextImage.src = serviceData[index].image;
+    nextLayer.classList.add("is-visible");
+    currentLayer.classList.remove("is-visible");
+  }
+  const serviceIndex = document.querySelector("[data-service-index]");
+  const serviceCaption = document.querySelector("[data-service-caption]");
+  if (serviceIndex) serviceIndex.textContent = String(index + 1).padStart(2, "0");
+  if (serviceCaption) serviceCaption.textContent = serviceData[index].caption;
+  serviceItems.forEach((item, itemIndex) => {
+    item.classList.toggle("is-active", itemIndex === index);
+    item.setAttribute("aria-pressed", String(itemIndex === index));
+  });
+}
+serviceItems.forEach((item, index) => {
+  item.addEventListener("pointerenter", () => selectService(index));
+  item.addEventListener("focus", () => selectService(index));
+  item.addEventListener("click", () => selectService(index));
+});
+selectService(0);
 
 const canvas = document.querySelector("#mineralCanvas");
 const context = canvas?.getContext("2d");
