@@ -16,7 +16,11 @@ new IntersectionObserver(([entry]) => {
 }).observe(headerMarker);
 
 const tabs = [...document.querySelectorAll(".artist-name[data-artist]")];
+const artistsSection = document.querySelector("#artists");
 let selectedArtist = -1;
+let artistRotationTimer = 0;
+let artistRotationPaused = false;
+const artistReduceMotion = matchMedia("(prefers-reduced-motion: reduce)");
 artistData.forEach(({ image }) => {
   const preload = new Image();
   preload.decoding = "async";
@@ -58,8 +62,26 @@ function selectArtist(index) {
     tab.setAttribute("aria-current", i === index ? "true" : "false");
   });
 }
+
+function stopArtistRotation() {
+  window.clearInterval(artistRotationTimer);
+  artistRotationTimer = 0;
+}
+
+function startArtistRotation() {
+  stopArtistRotation();
+  if (!artistsSection?.classList.contains("is-in-view") || artistRotationPaused || artistReduceMotion.matches) return;
+  artistRotationTimer = window.setInterval(() => {
+    selectArtist((selectedArtist + 1) % artistData.length);
+  }, 3200);
+}
+
 tabs.forEach((tab, index) => {
-  tab.addEventListener("pointerenter", () => selectArtist(index));
+  tab.addEventListener("pointerenter", () => {
+    artistRotationPaused = true;
+    stopArtistRotation();
+    selectArtist(index);
+  });
   tab.addEventListener("focus", () => selectArtist(index));
   tab.addEventListener("click", (event) => {
     if (matchMedia("(hover: none)").matches && selectedArtist !== index) {
@@ -69,6 +91,31 @@ tabs.forEach((tab, index) => {
   });
 });
 selectArtist(0);
+
+if (artistsSection) {
+  const artistSectionObserver = new IntersectionObserver(([entry]) => {
+    artistsSection.classList.toggle("is-in-view", entry.isIntersecting);
+    if (entry.isIntersecting) startArtistRotation();
+    else stopArtistRotation();
+  }, { threshold: .35 });
+  artistSectionObserver.observe(artistsSection);
+
+  artistsSection.addEventListener("pointerleave", () => {
+    artistRotationPaused = false;
+    startArtistRotation();
+  });
+  artistsSection.addEventListener("focusout", (event) => {
+    if (!artistsSection.contains(event.relatedTarget)) {
+      artistRotationPaused = false;
+      startArtistRotation();
+    }
+  });
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) stopArtistRotation();
+    else startArtistRotation();
+  });
+  artistReduceMotion.addEventListener?.("change", startArtistRotation);
+}
 
 const videos = [...document.querySelectorAll(".work-media video")];
 function formatVideoTime(value) {

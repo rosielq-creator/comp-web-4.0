@@ -28,6 +28,9 @@
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 700ms cubic-bezier(.16, 1, .3, 1), transform 700ms cubic-bezier(.16, 1, .3, 1);
 }
 
 #artists .artists-intro h2 {
@@ -63,6 +66,9 @@
   line-height: 1.08;
   text-transform: uppercase;
   user-select: none;
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 900ms cubic-bezier(.16, 1, .3, 1), transform 900ms cubic-bezier(.16, 1, .3, 1);
 }
 
 #artists .artist-field-left {
@@ -82,13 +88,16 @@
   top: 22%;
   left: 50%;
   display: block;
-  width: clamp(210px, 22vw, 340px);
+  width: clamp(208px, 20vw, 320px);
   height: auto;
   min-height: 0;
   aspect-ratio: 4 / 5;
   margin: 0;
   overflow: hidden;
-  transform: translateX(-50%) rotate(-1.5deg);
+  opacity: 0;
+  transform: translateX(-50%) translateY(24px) rotate(-1.5deg) scale(.975);
+  transition: opacity 850ms cubic-bezier(.16, 1, .3, 1), transform 1000ms cubic-bezier(.16, 1, .3, 1);
+  will-change: transform, opacity;
 }
 
 #artists .artist-display-name {
@@ -103,7 +112,7 @@
   -webkit-background-clip: text;
   background-clip: text;
   font-family: "Saira", sans-serif;
-  font-size: clamp(72px, 11vw, 176px);
+  font-size: clamp(54px, 7.2vw, 112px);
   font-weight: 750;
   letter-spacing: -.06em;
   line-height: .82;
@@ -111,6 +120,8 @@
   white-space: nowrap;
   transform: translate(-50%, -50%);
   pointer-events: none;
+  opacity: 0;
+  transition: opacity 600ms ease-out;
 }
 
 #artists .artist-name-list {
@@ -126,6 +137,8 @@
   border: 0;
   overflow: visible;
   transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 600ms ease-out 280ms;
 }
 
 #artists .artist-name {
@@ -140,6 +153,7 @@
   letter-spacing: .01em;
   line-height: 1;
   text-transform: uppercase;
+  transition: color 180ms ease, border-color 180ms ease, transform 260ms cubic-bezier(.16, 1, .3, 1);
 }
 
 #artists .artist-name::before {
@@ -152,6 +166,7 @@
 #artists .artist-name.is-active {
   border-color: var(--ivory);
   color: var(--ivory);
+  transform: translateY(-3px);
 }
 
 #artists .artist-name span,
@@ -172,6 +187,9 @@
   width: min(18vw, 235px);
   max-width: 235px;
   padding: 0;
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 700ms ease-out 360ms, transform 700ms cubic-bezier(.16, 1, .3, 1) 360ms;
 }
 
 #artists .artist-detail h3 {
@@ -209,6 +227,52 @@
   border: 0;
   border-top: 1px solid rgba(231, 230, 221, .26);
   font-size: clamp(18px, 1.65vw, 27px);
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 650ms ease-out 480ms, transform 650ms cubic-bezier(.16, 1, .3, 1) 480ms;
+}
+
+#artists.is-in-view .artists-intro,
+#artists.is-in-view .artist-field,
+#artists.is-in-view .artist-detail,
+#artists.is-in-view .artists-view-more {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+#artists.is-in-view .artist-preview {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0) rotate(-1.5deg) scale(1);
+}
+
+#artists.is-in-view .artist-display-name,
+#artists.is-in-view .artist-name-list {
+  opacity: 1;
+}
+
+#artists .artist-preview-layer {
+  transform: translateY(12px) scale(1.018);
+  transition: opacity 620ms ease, transform 760ms cubic-bezier(.645, .045, .355, 1);
+}
+
+#artists .artist-preview-layer.is-visible {
+  transform: translateY(0) scale(1);
+}
+
+#artists .artist-detail h3,
+#artists .artist-detail-role,
+#artists .artist-detail-copy,
+#artists .artist-detail > a {
+  transition: opacity 260ms ease-out, transform 340ms cubic-bezier(.16, 1, .3, 1);
+}
+
+#artists .artist-display-name.is-changing {
+  animation: artist-kinetic-name 620ms cubic-bezier(.16, 1, .3, 1);
+}
+
+@keyframes artist-kinetic-name {
+  0% { opacity: 0; transform: translate(-47%, -48%); }
+  100% { opacity: 1; transform: translate(-50%, -50%); }
 }
 
 @media (max-width: 560px) {
@@ -230,12 +294,12 @@
   #artists .artist-field-right { top: 19%; right: -12vw; }
   #artists .artist-preview {
     top: 25%;
-    width: min(51vw, 224px);
+    width: min(48vw, 210px);
   }
   #artists .artist-display-name {
     top: 43%;
     background-size: 7px 7px;
-    font-size: clamp(58px, 18vw, 82px);
+    font-size: clamp(48px, 15vw, 68px);
   }
   #artists .artist-name-list {
     right: 16px;
@@ -263,6 +327,25 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  #artists .artists-intro,
+  #artists .artist-field,
+  #artists .artist-preview,
+  #artists .artist-display-name,
+  #artists .artist-name-list,
+  #artists .artist-detail,
+  #artists .artists-view-more {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  #artists .artist-preview {
+    transform: translateX(-50%) rotate(-1.5deg);
+  }
+  #artists .artist-preview-layer,
+  #artists .artist-preview-layer.is-visible {
+    transform: none;
+    transition: opacity 180ms ease;
+  }
   #artists .artist-display-name.is-changing {
     animation: none;
   }
