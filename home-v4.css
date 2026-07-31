@@ -1365,26 +1365,211 @@ main .artists {
   }
 }
 
-/* 60% post-hero scale: preserve full-bleed chapter backgrounds while reducing
-   every later text and media element without changing the opening sequence. */
-.scaled-section-shell {
-  width: 100%;
-  overflow: hidden;
+/* Approved 60% visual scale after the opening sequence.
+   Values are reduced directly so anchors, sticky media and hit areas remain native. */
+main .artists-manifesto {
+  max-width: 19ch;
+  font-size: clamp(8px, .468vw, 8.4px);
 }
-.scaled-section-shell--ink {
-  background: var(--ink);
+main .artists-manifesto-head {
+  gap: 11px;
+  font-size: 6px;
 }
-.scaled-section-shell--ivory {
-  background: var(--ivory);
+main .artists-view-more {
+  min-width: min(100%, 106px);
+  min-height: 27px;
+  font-size: 7.2px;
 }
-.scaled-section-shell--moss {
-  background: var(--moss);
+main .artist-name {
+  font-size: clamp(49px, 5.64vw, 106px);
 }
-.scaled-section {
-  width: 166.666667%;
-  margin-left: 0;
-  zoom: 0.6;
+main .artist-preview {
+  width: min(60%, 252px);
 }
+main .artist-preview-index {
+  top: 10px;
+  right: 11px;
+  left: 11px;
+  font-size: 6px;
+}
+main .artist-preview-meta {
+  right: 11px;
+  bottom: 10px;
+  left: 11px;
+  gap: 12px;
+  font-size: 7px;
+}
+main .statement-copy {
+  font-size: clamp(31px, 4.44vw, 83px);
+}
+main .statement-note {
+  max-width: 324px;
+  margin-top: 36px;
+  font-size: 12px;
+}
+main .section-tag {
+  font-size: 7px;
+}
+main .success-stories .work-head h2 {
+  font-size: clamp(46px, 6.84vw, 131px);
+}
+main .success-stories .work-intro {
+  max-width: 21ch;
+  font-size: clamp(10px, .75vw, 13px);
+}
+main .success-stories .work-row--lead .work-media {
+  grid-column: 3 / 11;
+}
+main .success-stories .work-row--left .work-media {
+  grid-column: 1 / 6;
+}
+main .success-stories .work-row--right .work-media {
+  grid-column: 8 / 13;
+}
+main .success-stories .work-row--wide .work-media {
+  grid-column: 4 / 10;
+}
+main .success-stories .work-copy h3 {
+  font-size: clamp(22px, 2.58vw, 49px);
+}
+main .success-stories .work-copy > p:first-child {
+  font-size: 7px;
+}
+main .success-stories .work-copy > p:nth-child(3) {
+  font-size: clamp(9px, .6vw, 10px);
+}
+main .success-stories .work-copy > a {
+  min-height: 27px;
+  font-size: 7px;
+}
+main .work-video-controls {
+  right: 10px;
+  bottom: 10px;
+  left: 10px;
+  gap: 7px;
+  min-height: 29px;
+  padding: 5px 6px;
+}
+main .work-video-controls button {
+  min-width: 29px;
+  min-height: 20px;
+  padding-inline: 5px;
+  font-size: 6px;
+}
+main .work-time {
+  min-width: 46px;
+  font-size: 6px;
+}
+main .success-stories .view-all {
+  font-size: clamp(31px, 4.2vw, 74px);
+}
+main .services-head h2 {
+  font-size: clamp(42px, 6.24vw, 114px);
+}
+main .service-visual {
+  grid-column: 1 / 4;
+}
+main .service-visual figcaption {
+  right: 11px;
+  bottom: 11px;
+  left: 11px;
+  grid-template-columns: 25px 1fr;
+  gap: 8px;
+  padding: 8px 10px;
+}
+main .service-visual figcaption span {
+  font-size: 7px;
+}
+main .service-visual figcaption b {
+  font-size: 8px;
+}
+main .service-list {
+  grid-column: 8 / 13;
+}
+main .service-item {
+  grid-template-columns: 29px 1fr;
+  gap: 0 7px;
+}
+main .service-item span {
+  font-size: 7px;
+}
+main .service-item strong {
+  font-size: clamp(20px, 2.52vw, 43px);
+}
+main .service-item i {
+  max-width: 29ch;
+  font-size: clamp(9px, .6vw, 10px);
+}
+main .contact > p,
+main .contact > a,
+footer {
+  font-size: 7px;
+}
+main .contact h2 {
+  font-size: clamp(49px, 7.8vw, 144px);
+}
+main .contact > a {
+  padding: 10px 12px;
+}
+main .contact > a b {
+  margin-left: 48px;
+}
+footer .official-logo {
+  width: 78px;
+}
+
+@media (max-width: 767px) {
+  main .artists-manifesto {
+    max-width: 21ch;
+    font-size: 7px;
+  }
+  main .artist-name {
+    font-size: clamp(35px, 10.8vw, 50px);
+  }
+  main .artist-preview {
+    width: min(42vw, 180px);
+  }
+  main .statement-copy {
+    font-size: 9vw;
+  }
+  main .statement-note {
+    font-size: 10px;
+  }
+  main .success-stories .work-head h2 {
+    font-size: clamp(38px, 12vw, 58px);
+  }
+  main .success-stories .work-intro {
+    font-size: 10px;
+  }
+  main .success-stories .work-media,
+  main .success-stories .work-row--left .work-media,
+  main .success-stories .work-row--right .work-media,
+  main .success-stories .work-row--wide .work-media {
+    width: 60%;
+  }
+  main .success-stories .work-copy h3 {
+    font-size: 7.2vw;
+  }
+  main .success-stories .work-copy > p:nth-child(3) {
+    font-size: 10px;
+  }
+  main .success-stories .view-all {
+    font-size: 7.8vw;
+  }
+  main .services-head h2 {
+    font-size: 10.8vw;
+  }
+  main .service-visual {
+    width: 60%;
+  }
+  main .service-item strong {
+    font-size: 4.2vw;
+  }
+  main .contact h2 {
+    font-size: 13.2vw;
+  }
+}
+
 
 /* Final services lock: keep this after all legacy homepage declarations. */
 main .services {
@@ -2408,5 +2593,42 @@ main .artists {
     height: auto;
     min-height: 100svh;
     padding: 0;
+  }
+}
+
+/* Final 60% Services lock. */
+main .services-head h2 {
+  font-size: clamp(42px, 6.24vw, 114px);
+}
+main .service-visual {
+  grid-column: 1 / 4;
+}
+main .service-visual figcaption span {
+  font-size: 7px;
+}
+main .service-visual figcaption b {
+  font-size: 8px;
+}
+main .service-list {
+  grid-column: 8 / 13;
+}
+main .service-item span {
+  font-size: 7px;
+}
+main .service-item strong {
+  font-size: clamp(20px, 2.52vw, 43px);
+}
+main .service-item i {
+  font-size: clamp(9px, .6vw, 10px);
+}
+@media (max-width: 767px) {
+  main .services-head h2 {
+    font-size: 10.8vw;
+  }
+  main .service-visual {
+    width: 60%;
+  }
+  main .service-item strong {
+    font-size: 4.2vw;
   }
 }
