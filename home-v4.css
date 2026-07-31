@@ -622,6 +622,253 @@ main .artists {
   padding: 0;
 }
 
+/* Continuous Success Stories composition.
+   Keeps the established palette and replaces the old slide-like work rows. */
+.artist-name-list {
+  gap: clamp(20px, 2.5vh, 34px);
+}
+.artist-name {
+  position: relative;
+  z-index: 0;
+  padding-block: .055em;
+  touch-action: manipulation;
+  isolation: isolate;
+}
+.artist-name:hover,
+.artist-name:focus-visible,
+.artist-name.is-active {
+  z-index: 1;
+}
+
+.success-stories {
+  overflow: clip;
+  padding: clamp(120px, 18vh, 220px) 4vw clamp(110px, 16vh, 190px);
+}
+.success-stories .work-head {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 0 1.2vw;
+  padding: 0 0 clamp(110px, 16vh, 190px);
+}
+.success-stories .work-head .section-tag {
+  grid-column: 1 / 3;
+  align-self: start;
+  margin: .8em 0 0;
+}
+.success-stories .work-head h2 {
+  grid-column: 3 / 13;
+  margin: 0;
+  max-width: none;
+  font-size: clamp(76px, 11.4vw, 218px);
+  font-weight: 600;
+  line-height: .82;
+  letter-spacing: -.075em;
+  text-transform: none;
+}
+.success-stories .work-intro {
+  grid-column: 8 / 12;
+  margin: clamp(48px, 7vh, 84px) 0 0;
+  max-width: 34ch;
+  color: #5d6158;
+  font-size: clamp(16px, 1.25vw, 21px);
+  line-height: 1.45;
+}
+.work-flow {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: 1.2vw;
+  row-gap: clamp(140px, 22vh, 280px);
+}
+.success-stories .work-row {
+  display: grid;
+  grid-template-columns: subgrid;
+  grid-column: 1 / -1;
+  align-items: start;
+  min-height: 0;
+  padding: 0;
+  border: 0;
+  opacity: 0;
+  transform: translateY(34px);
+  transition: opacity .75s var(--ease), transform .9s var(--ease);
+}
+.success-stories .work-row.is-inview {
+  opacity: 1;
+  transform: none;
+}
+.success-stories .work-media {
+  grid-column: 1 / 13;
+  width: 100%;
+  max-height: none;
+  aspect-ratio: 16 / 9;
+  background: var(--forest);
+}
+.success-stories .work-row--left .work-media {
+  grid-column: 1 / 9;
+  aspect-ratio: 4 / 3;
+}
+.success-stories .work-row--right .work-media {
+  grid-column: 5 / 13;
+  aspect-ratio: 4 / 3;
+}
+.success-stories .work-row--wide .work-media {
+  grid-column: 2 / 12;
+  aspect-ratio: 16 / 9;
+}
+.success-stories .work-media video {
+  filter: saturate(.82);
+  transition: transform .8s var(--ease), filter .5s ease;
+}
+.success-stories .work-media:hover video,
+.success-stories .work-media:focus-visible video {
+  transform: scale(1.012);
+  filter: saturate(1);
+}
+.success-stories .work-copy {
+  grid-column: 1 / 13;
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 0 1.2vw;
+  align-self: auto;
+  padding: clamp(22px, 3vh, 34px) 0 0;
+}
+.success-stories .work-row--left .work-copy {
+  grid-column: 1 / 9;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+}
+.success-stories .work-row--right .work-copy {
+  grid-column: 5 / 13;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+}
+.success-stories .work-row--wide .work-copy {
+  grid-column: 2 / 12;
+  grid-template-columns: repeat(10, minmax(0, 1fr));
+}
+.success-stories .work-copy > p:first-child {
+  grid-column: 1 / 3;
+  margin: .45em 0 0;
+  color: #74796d;
+  font-size: 11px;
+  letter-spacing: .055em;
+  text-transform: uppercase;
+}
+.success-stories .work-copy h3 {
+  grid-column: 3 / 9;
+  margin: 0;
+  font-size: clamp(36px, 4.3vw, 82px);
+  font-weight: 600;
+  line-height: .93;
+  letter-spacing: -.055em;
+}
+.success-stories .work-copy > p:nth-child(3) {
+  grid-column: 9 / 12;
+  margin: .35em 0 0;
+  color: #5d6158;
+  font-size: clamp(14px, 1vw, 17px);
+  line-height: 1.5;
+}
+.success-stories .work-copy > a {
+  grid-column: 12;
+  align-self: start;
+  justify-self: end;
+  display: inline-flex;
+  gap: 9px;
+  min-height: 44px;
+  color: var(--ink);
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.success-stories .work-copy > a b {
+  font-weight: 500;
+  transition: transform .18s var(--ease);
+}
+.success-stories .work-copy > a:hover b,
+.success-stories .work-copy > a:focus-visible b {
+  transform: translate(3px, -3px);
+}
+.success-stories .view-all {
+  margin-top: clamp(140px, 22vh, 270px);
+}
+
+@media (max-width: 767px) {
+  .artist-name-list {
+    gap: clamp(14px, 3.2vw, 22px);
+  }
+  .artist-name {
+    padding-block: .07em;
+  }
+  .success-stories {
+    padding: 104px 18px 100px;
+  }
+  .success-stories .work-head {
+    display: block;
+    padding-bottom: 88px;
+  }
+  .success-stories .work-head .section-tag {
+    margin: 0 0 28px;
+  }
+  .success-stories .work-head h2 {
+    font-size: clamp(64px, 20vw, 96px);
+    line-height: .84;
+  }
+  .success-stories .work-intro {
+    margin: 38px 0 0 auto;
+    max-width: 27ch;
+    font-size: 16px;
+  }
+  .work-flow {
+    display: block;
+  }
+  .success-stories .work-row {
+    display: block;
+    margin: 0 0 108px;
+  }
+  .success-stories .work-media,
+  .success-stories .work-row--left .work-media,
+  .success-stories .work-row--right .work-media,
+  .success-stories .work-row--wide .work-media {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+  }
+  .success-stories .work-copy,
+  .success-stories .work-row--left .work-copy,
+  .success-stories .work-row--right .work-copy,
+  .success-stories .work-row--wide .work-copy {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 0 16px;
+    padding: 20px 0 0;
+  }
+  .success-stories .work-copy > p:first-child {
+    grid-column: 1 / -1;
+    margin: 0 0 16px;
+  }
+  .success-stories .work-copy h3 {
+    grid-column: 1 / -1;
+    font-size: clamp(38px, 11vw, 58px);
+  }
+  .success-stories .work-copy > p:nth-child(3) {
+    grid-column: 1;
+    margin: 24px 0 0;
+    font-size: 15px;
+  }
+  .success-stories .work-copy > a {
+    grid-column: 2;
+    margin-top: 24px;
+  }
+  .success-stories .view-all {
+    margin-top: 28px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .success-stories .work-row {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 /* Screenshot-led artist composition and continuous hero handoff. */
 .hero-sequence {
   height: 145svh;
@@ -833,6 +1080,25 @@ main .artists {
     height: auto;
     min-height: 100svh;
     padding: 0;
+  }
+}
+
+/* Final artist hit-area lock. Oversized glyphs must never capture a neighbour's click. */
+.artists .artist-name-list {
+  gap: clamp(20px, 2.5vh, 34px);
+}
+.artists .artist-name {
+  padding-block: .055em;
+}
+.artists .artist-name span {
+  pointer-events: none;
+}
+@media (max-width: 767px) {
+  .artists .artist-name-list {
+    gap: clamp(14px, 3.2vw, 22px);
+  }
+  .artists .artist-name {
+    padding-block: .07em;
   }
 }
 

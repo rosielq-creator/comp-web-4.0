@@ -67,6 +67,18 @@ const videoObserver = new IntersectionObserver(entries => entries.forEach(entry 
 }), { threshold: .45 });
 videos.forEach(video => videoObserver.observe(video));
 
+const workRows = [...document.querySelectorAll(".work-row")];
+if (workRows.length) {
+  const workRevealObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add("is-inview");
+      workRevealObserver.unobserve(entry.target);
+    });
+  }, { threshold: .12, rootMargin: "0px 0px -8% 0px" });
+  workRows.forEach(row => workRevealObserver.observe(row));
+}
+
 const canvas = document.querySelector("#mineralCanvas");
 const context = canvas?.getContext("2d");
 const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)");
