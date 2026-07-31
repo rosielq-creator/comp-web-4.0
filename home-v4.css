@@ -1311,6 +1311,253 @@ main .artists {
   }
 }
 
+/* 2026-07-31 / Artist index: compact independent-magazine composition.
+   Editorial detail, restrained image/type scale, and a clear chapter exit. */
+main .artists {
+  min-height: auto;
+}
+
+main .artists-shell {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(150px, 2fr) minmax(300px, 4.4fr) minmax(220px, 2.7fr);
+  grid-template-rows: 1fr auto;
+  gap: clamp(28px, 3.2vw, 62px);
+  min-height: clamp(720px, 96svh, 940px);
+  padding: clamp(104px, 12vh, 138px) clamp(24px, 4vw, 76px) clamp(42px, 6vh, 70px);
+  overflow: hidden;
+}
+
+main .artists-manifesto {
+  grid-column: 1;
+  grid-row: 1;
+  align-self: center;
+  width: 100%;
+  max-width: 230px;
+  margin: 0;
+  color: rgba(231, 230, 221, .58);
+  font-size: clamp(10px, .68vw, 13px);
+  line-height: 1.58;
+}
+
+main .artists-manifesto-head {
+  display: grid;
+  gap: 8px;
+  margin-bottom: clamp(44px, 6vh, 70px);
+  color: var(--ivory);
+  font-size: clamp(8px, .52vw, 10px);
+  font-weight: 600;
+  letter-spacing: .09em;
+  line-height: 1.25;
+  text-transform: uppercase;
+}
+
+main .artists-manifesto-head::before {
+  width: 5px;
+  height: 5px;
+  margin: 0 0 14px;
+}
+
+main .artists-manifesto-head small {
+  color: rgba(231, 230, 221, .36);
+  font: inherit;
+}
+
+main .artist-name-list {
+  grid-column: 2;
+  grid-row: 1;
+  align-self: center;
+  align-items: stretch;
+  width: 100%;
+  padding: 0;
+  gap: 0;
+  border-top: 1px solid rgba(231, 230, 221, .18);
+}
+
+main .artist-name {
+  width: 100%;
+  padding: .22em 0 .2em;
+  border-bottom: 1px solid rgba(231, 230, 221, .18);
+  color: rgba(231, 230, 221, .27);
+  font-size: clamp(42px, 4.2vw, 72px);
+  font-weight: 600;
+  line-height: .94;
+  letter-spacing: -.055em;
+}
+
+main .artist-name::before {
+  content: "0" attr(data-artist);
+  display: inline-block;
+  width: clamp(34px, 3.2vw, 54px);
+  color: rgba(231, 230, 221, .35);
+  font-size: clamp(8px, .52vw, 10px);
+  font-weight: 600;
+  letter-spacing: .08em;
+  vertical-align: middle;
+  transform: translateY(-.12em);
+}
+
+main .artist-name:first-child::before { content: "01"; }
+main .artist-name:nth-child(2)::before { content: "02"; }
+main .artist-name:nth-child(3)::before { content: "03"; }
+main .artist-name:nth-child(4)::before { content: "04"; }
+main .artist-name:nth-child(5)::before { content: "05"; }
+
+main .artist-name:hover,
+main .artist-name:focus-visible,
+main .artist-name.is-active {
+  color: var(--ivory);
+  transform: none;
+}
+
+main .artist-name:hover span,
+main .artist-name:focus-visible span,
+main .artist-name.is-active span {
+  display: inline-block;
+  transform: translateX(6px);
+  letter-spacing: -.055em;
+}
+
+main .artist-preview {
+  position: relative;
+  top: auto;
+  right: auto;
+  grid-column: 3;
+  grid-row: 1;
+  align-self: center;
+  width: min(100%, 330px);
+  height: auto;
+  min-height: 0;
+  aspect-ratio: 3 / 4;
+  justify-self: end;
+  transform: none;
+}
+
+main .artist-preview-index {
+  top: 14px;
+  right: 14px;
+  left: 14px;
+  font-size: 8px;
+}
+
+main .artist-preview-meta {
+  right: 14px;
+  bottom: 14px;
+  left: 14px;
+  font-size: clamp(8px, .52vw, 10px);
+}
+
+main .artists-view-more {
+  grid-column: 2 / 4;
+  grid-row: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  min-width: 0;
+  min-height: 0;
+  margin: clamp(10px, 1.5vh, 20px) 0 0;
+  padding: clamp(24px, 3.5vh, 40px) 0 0;
+  border: 0;
+  border-top: 1px solid rgba(231, 230, 221, .42);
+  color: var(--ivory);
+  font-size: clamp(25px, 2.25vw, 38px);
+  font-weight: 600;
+  letter-spacing: -.035em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+main .artists-view-more b {
+  font-size: .8em;
+  font-weight: 400;
+  transition: transform 180ms ease;
+}
+
+main .artists-view-more:hover,
+main .artists-view-more:focus-visible {
+  color: var(--brand-green);
+  background: transparent;
+}
+
+main .artists-view-more:hover b,
+main .artists-view-more:focus-visible b {
+  transform: translate(5px, -5px);
+}
+
+@media (max-width: 900px) {
+  main .artists-shell {
+    display: grid;
+    grid-template-columns: 1fr minmax(130px, 42%);
+    grid-template-rows: auto auto auto;
+    gap: 34px 20px;
+    min-height: auto;
+    padding: 96px 18px 48px;
+  }
+
+  main .artists-manifesto {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    max-width: 38ch;
+  }
+
+  main .artists-manifesto-head {
+    margin-bottom: 24px;
+  }
+
+  main .artists-manifesto p + p {
+    display: none;
+  }
+
+  main .artist-name-list {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  main .artist-name {
+    font-size: clamp(30px, 9.2vw, 46px);
+    line-height: 1;
+  }
+
+  main .artist-name::before {
+    width: 28px;
+  }
+
+  main .artist-preview {
+    grid-column: 2;
+    grid-row: 2;
+    align-self: center;
+    width: 100%;
+    min-height: 0;
+    margin: 0;
+  }
+
+  main .artist-preview-index {
+    display: none;
+  }
+
+  main .artist-preview-meta {
+    right: 9px;
+    bottom: 9px;
+    left: 9px;
+    display: block;
+    font-size: 7px;
+  }
+
+  main .artist-preview-meta i {
+    display: block;
+    margin-top: 5px;
+  }
+
+  main .artists-view-more {
+    grid-column: 1 / -1;
+    grid-row: 3;
+    margin-top: 4px;
+    padding-top: 24px;
+    font-size: clamp(22px, 6.3vw, 28px);
+  }
+}
+
 @media (max-width: 767px) {
   .hero-sequence {
     height: 130svh;
@@ -2759,5 +3006,110 @@ main .service-item i {
     font-size: clamp(56px, 15.5vw, 94px);
     line-height: .95;
     text-align: left;
+  }
+}
+
+/* Final cascade lock: compact editorial Artist index. */
+main .artists {
+  min-height: auto;
+}
+main .artists-shell {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(150px, 2fr) minmax(300px, 4.4fr) minmax(220px, 2.7fr);
+  grid-template-rows: 1fr auto;
+  gap: clamp(28px, 3.2vw, 62px);
+  min-height: clamp(720px, 96svh, 940px);
+  padding: clamp(104px, 12vh, 138px) clamp(24px, 4vw, 76px) clamp(42px, 6vh, 70px);
+}
+main .artists-manifesto {
+  grid-column: 1;
+  grid-row: 1;
+  align-self: center;
+  width: 100%;
+  max-width: 230px;
+  margin: 0;
+}
+main .artists-view-more {
+  grid-column: 2 / 4;
+  grid-row: 2;
+  width: 100%;
+  min-width: 0;
+  min-height: 0;
+  margin: clamp(10px, 1.5vh, 20px) 0 0;
+  padding: clamp(24px, 3.5vh, 40px) 0 0;
+  font-size: clamp(25px, 2.25vw, 38px);
+}
+main .artist-name-list {
+  grid-column: 2;
+  grid-row: 1;
+  align-self: center;
+  align-items: stretch;
+  width: 100%;
+  gap: 0;
+  padding: 0;
+}
+main .artist-name {
+  width: 100%;
+  padding: .22em 0 .2em;
+  font-size: clamp(42px, 4.2vw, 72px);
+  line-height: .94;
+}
+main .artist-preview {
+  position: relative;
+  top: auto;
+  right: auto;
+  grid-column: 3;
+  grid-row: 1;
+  align-self: center;
+  justify-self: end;
+  width: min(100%, 330px);
+  height: auto;
+  min-height: 0;
+  transform: none;
+}
+
+@media (max-width: 900px) {
+  main .artists-shell {
+    display: grid;
+    grid-template-columns: 1fr minmax(130px, 42%);
+    grid-template-rows: auto auto auto;
+    gap: 34px 20px;
+    min-height: auto;
+    padding: 96px 18px 48px;
+  }
+  main .artists-manifesto {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    max-width: 38ch;
+  }
+  main .artist-name-list {
+    grid-column: 1;
+    grid-row: 2;
+  }
+  main .artist-name {
+    width: 100%;
+    padding: .22em 0 .2em;
+    font-size: clamp(30px, 9.2vw, 46px);
+    line-height: 1;
+  }
+  main .artist-preview {
+    position: relative;
+    top: auto;
+    right: auto;
+    grid-column: 2;
+    grid-row: 2;
+    align-self: center;
+    width: 100%;
+    min-height: 0;
+    margin: 0;
+    transform: none;
+  }
+  main .artists-view-more {
+    grid-column: 1 / -1;
+    grid-row: 3;
+    margin-top: 4px;
+    padding-top: 24px;
+    font-size: clamp(22px, 6.3vw, 28px);
   }
 }
